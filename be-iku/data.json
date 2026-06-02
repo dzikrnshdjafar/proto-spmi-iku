@@ -1,0 +1,335 @@
+{
+  "standards": [
+    {
+      "id": "IKU-001",
+      "rumpun": "Pendidikan",
+      "nama": "Persentase Dosen Berkualifikasi S3",
+      "formula": "Jumlah Dosen S3 / Total Dosen Aktif * 100",
+      "targetType": "percentage",
+      "targetValue": 40,
+      "operator": ">=",
+      "snDikti": "STANDAR DOSEN DAN TENAGA KEPENDIDIKAN",
+      "unitPenanggungJawab": "Program Studi / Biro Kepegawaian"
+    },
+    {
+      "id": "IKU-002",
+      "rumpun": "Pendidikan",
+      "nama": "Persentase Kurikulum Berbasis OBE (Outcome-Based Education)",
+      "formula": "Jumlah Prodi Ber-OBE / Total Prodi * 100",
+      "targetType": "percentage",
+      "targetValue": 90,
+      "operator": ">=",
+      "snDikti": "STANDAR PROSES PEMBELAJARAN",
+      "unitPenanggungJawab": "Lembaga Pengembangan Pembelajaran & Penjaminan Mutu"
+    },
+    {
+      "id": "IKU-003",
+      "rumpun": "Penelitian",
+      "nama": "Rata-rata Publikasi Ilmiah Internasional Reputasi per Dosen",
+      "formula": "Jumlah Publikasi Scopus/WoS / Total Dosen",
+      "targetType": "number",
+      "targetValue": 1.2,
+      "operator": ">=",
+      "snDikti": "STANDAR LUARAN PENELITIAN",
+      "unitPenanggungJawab": "Lembaga Penelitian & Pengabdian Masyarakat"
+    },
+    {
+      "id": "IKU-004",
+      "rumpun": "Pengabdian Kepada Masyarakat",
+      "nama": "Rasio Kegiatan Pengabdian Masyarakat Berbasis Hasil Penelitian",
+      "formula": "Jumlah PkM Hilirisasi Penelitian / Total PkM * 100",
+      "targetType": "percentage",
+      "targetValue": 30,
+      "operator": ">=",
+      "snDikti": "STANDAR LUARAN PENGABDIAN MASYARAKAT",
+      "unitPenanggungJawab": "Lembaga Penelitian & Pengabdian Masyarakat"
+    },
+    {
+      "id": "IKU-005",
+      "rumpun": "Organisasi",
+      "nama": "Persentase Unit Kerja dengan ISO 9001:2015 Terverifikasi",
+      "formula": "Jumlah Unit Bersertifikasi / Total Unit Kerja * 100",
+      "targetType": "percentage",
+      "targetValue": 80,
+      "operator": ">=",
+      "snDikti": "STANDAR PENGELOLAAN",
+      "unitPenanggungJawab": "Badan Penjaminan Mutu"
+    },
+    {
+      "id": "IKU-006",
+      "rumpun": "Keuangan",
+      "nama": "Opini Audit Keuangan Eksternal oleh KAP",
+      "formula": "Predikat Opini Hasil Audit Eksternal",
+      "targetType": "text",
+      "targetValue": "WTP (Wajar Tanpa Pengecualian)",
+      "operator": "equals",
+      "snDikti": "STANDAR PEMBIAYAAN PENDIDIKAN TINGGI",
+      "unitPenanggungJawab": "Biro Keuangan Utama"
+    },
+    {
+      "id": "IKU-007",
+      "rumpun": "Kemahasiswaan",
+      "nama": "Persentase Lulusan yang Mendapatkan Pekerjaan dalam 6 Bulan",
+      "formula": "Jumlah Lulusan Bekerja / Total Lulusan Tahun L * 100",
+      "targetType": "percentage",
+      "targetValue": 75,
+      "operator": ">=",
+      "snDikti": "STANDAR KOMPETENSI LULUSAN",
+      "unitPenanggungJawab": "Pusat Karier & Alumni"
+    },
+    {
+      "id": "IKU-008",
+      "rumpun": "Ketenagaan",
+      "nama": "Persentase Tenaga Kependidikan bersertifikasi Keahlian",
+      "formula": "Jumlah Tendik Bersertifikat / Total Tendik * 100",
+      "targetType": "percentage",
+      "targetValue": 70,
+      "operator": ">=",
+      "snDikti": "STANDAR DOSEN DAN TENAGA KEPENDIDIKAN",
+      "unitPenanggungJawab": "Biro Administrasi Kepegawaian"
+    },
+    {
+      "id": "IKU-009",
+      "rumpun": "Sarana Prasarana",
+      "nama": "Rasio Luas Ruang Belajar Utama per Mahasiswa",
+      "formula": "Total Luas Ruang Kelas Utama (m2) / Jumlah Mahasiswa",
+      "targetType": "number",
+      "targetValue": 2,
+      "operator": ">=",
+      "snDikti": "STANDAR SARANA DAN PRASARANA PENDIDIKAN TINGGI",
+      "unitPenanggungJawab": "Biro Sarana dan Prasarana"
+    }
+  ],
+  "achievements": [
+    {
+      "id": "ACH-001",
+      "standardId": "IKU-001",
+      "actualValue": 45,
+      "evidenceUrl": "https://sister.kemdikbud.go.id/universitas/sister-sync",
+      "evidenceFileName": "SISTER_Sync_Snapshot_2026-06-02.pdf",
+      "lastUpdated": "2026-06-02T16:09:46.951Z",
+      "syncSource": "SISTER API"
+    },
+    {
+      "id": "ACH-002",
+      "standardId": "IKU-002",
+      "actualValue": 90,
+      "evidenceUrl": "https://obe.kampus.ac.id/curriculum-api",
+      "evidenceFileName": "OBE_Export_2026-06-02.xlsx",
+      "lastUpdated": "2026-06-02T16:09:47.489Z",
+      "syncSource": "OBE API"
+    },
+    {
+      "id": "ACH-003",
+      "standardId": "IKU-003",
+      "actualValue": 1.4,
+      "evidenceUrl": "https://sinta.kemdikbud.go.id/universitas/mutu",
+      "evidenceFileName": "Laporan_Kinerja_Penelitian_2026.xlsx",
+      "lastUpdated": "2026-05-28T14:15:00Z",
+      "syncSource": "Manual Upload"
+    },
+    {
+      "id": "ACH-004",
+      "standardId": "IKU-004",
+      "actualValue": 35,
+      "evidenceUrl": "https://drive.google.com/drive/folders/pkm-hilirisasi",
+      "evidenceFileName": "SK_Rektor_PkM_Hilirisasi_2026.pdf",
+      "lastUpdated": "2026-06-02T11:00:00Z",
+      "syncSource": "Manual Upload"
+    },
+    {
+      "id": "ACH-005",
+      "standardId": "IKU-005",
+      "actualValue": 85,
+      "evidenceUrl": "https://drive.google.com/drive/folders/iso-bpm",
+      "evidenceFileName": "Sertifikat_ISO_9001_2015_Universitas.pdf",
+      "lastUpdated": "2026-06-02T11:05:00Z",
+      "syncSource": "Manual Upload"
+    },
+    {
+      "id": "ACH-006",
+      "standardId": "IKU-006",
+      "actualValue": "WDP (Wajar Dengan Pengecualian)",
+      "evidenceUrl": "https://drive.google.com/drive/folders/audit-keuangan",
+      "evidenceFileName": "Laporan_Audit_KAP_2025_signed.pdf",
+      "lastUpdated": "2026-05-30T16:45:00Z",
+      "syncSource": "Manual Upload"
+    },
+    {
+      "id": "ACH-007",
+      "standardId": "IKU-007",
+      "actualValue": 78,
+      "evidenceUrl": "https://tracer.kemdikbud.go.id/kampus-mutu",
+      "evidenceFileName": "Tracer_Study_Batch_2025.pdf",
+      "lastUpdated": "2026-06-02T11:00:00Z",
+      "syncSource": "Manual Upload"
+    },
+    {
+      "id": "ACH-008",
+      "standardId": "IKU-008",
+      "actualValue": 65,
+      "evidenceUrl": "https://drive.google.com/drive/folders/tendik-mutu",
+      "evidenceFileName": "Sertifikasi_Tendik_Administrasi_2026.xlsx",
+      "lastUpdated": "2026-06-02T11:10:00Z",
+      "syncSource": "Manual Upload"
+    },
+    {
+      "id": "ACH-009",
+      "standardId": "IKU-009",
+      "actualValue": 2.2,
+      "evidenceUrl": "https://drive.google.com/drive/folders/sarpras-mutu",
+      "evidenceFileName": "Data_Ruang_Kelas_2026.pdf",
+      "lastUpdated": "2026-06-02T11:15:00Z",
+      "syncSource": "Manual Upload"
+    }
+  ],
+  "auditForms": [
+    {
+      "id": "AUD-001",
+      "standardId": "IKU-001",
+      "status": "Checked",
+      "auditorNotes": "Audit Lolos: Capaian 46 telah memenuhi target >= 40.",
+      "auditedAt": "2026-06-02T15:02:13.123Z",
+      "auditorName": "Dr. Ir. Hendra Wijaya, M.T."
+    },
+    {
+      "id": "AUD-002",
+      "standardId": "IKU-002",
+      "status": "Checked",
+      "auditorNotes": "Audit Lolos: Capaian 100 telah memenuhi target >= 90.",
+      "auditedAt": "2026-06-02T15:02:13.123Z",
+      "auditorName": "Dr. Ir. Hendra Wijaya, M.T."
+    },
+    {
+      "id": "AUD-003",
+      "standardId": "IKU-003",
+      "status": "Checked",
+      "auditorNotes": "Audit Lolos: Capaian 1.4 telah memenuhi target >= 1.2.",
+      "auditedAt": "2026-06-02T15:02:13.123Z",
+      "auditorName": "Dr. Ir. Hendra Wijaya, M.T."
+    },
+    {
+      "id": "AUD-004",
+      "standardId": "IKU-004",
+      "status": "Checked",
+      "auditorNotes": "Audit Lolos: Capaian 35 telah memenuhi target >= 30.",
+      "auditedAt": "2026-06-02T15:02:13.123Z",
+      "auditorName": "Dr. Ir. Hendra Wijaya, M.T."
+    },
+    {
+      "id": "AUD-005",
+      "standardId": "IKU-005",
+      "status": "Checked",
+      "auditorNotes": "Audit Lolos: Capaian 85 telah memenuhi target >= 80.",
+      "auditedAt": "2026-06-02T15:02:13.123Z",
+      "auditorName": "Dr. Ir. Hendra Wijaya, M.T."
+    },
+    {
+      "id": "AUD-006",
+      "standardId": "IKU-006",
+      "status": "Checked",
+      "auditorNotes": "Audit Temuan: Opini Audit Keuangan Eksternal oleh KAP tidak memenuhi standar. Target: equals WTP (Wajar Tanpa Pengecualian), Capaian Riil: WDP (Wajar Dengan Pengecualian).",
+      "auditedAt": "2026-06-02T15:02:13.123Z",
+      "auditorName": "Dr. Ir. Hendra Wijaya, M.T."
+    },
+    {
+      "id": "AUD-007",
+      "standardId": "IKU-007",
+      "status": "Checked",
+      "auditorNotes": "Audit Lolos: Capaian 78 telah memenuhi target >= 75.",
+      "auditedAt": "2026-06-02T15:02:13.123Z",
+      "auditorName": "Dr. Ir. Hendra Wijaya, M.T."
+    },
+    {
+      "id": "AUD-008",
+      "standardId": "IKU-008",
+      "status": "Checked",
+      "auditorNotes": "Audit Temuan: Persentase Tenaga Kependidikan bersertifikasi Keahlian tidak memenuhi standar. Target: >= 70, Capaian Riil: 65.",
+      "auditedAt": "2026-06-02T15:02:13.123Z",
+      "auditorName": "Dr. Ir. Hendra Wijaya, M.T."
+    },
+    {
+      "id": "AUD-009",
+      "standardId": "IKU-009",
+      "status": "Checked",
+      "auditorNotes": "Audit Lolos: Capaian 2.2 telah memenuhi target >= 2.0.",
+      "auditedAt": "2026-06-02T15:02:13.123Z",
+      "auditorName": "Dr. Ir. Hendra Wijaya, M.T."
+    }
+  ],
+  "tickets": [
+    {
+      "id": "TCK-001",
+      "standardId": "IKU-006",
+      "auditId": "AUD-006",
+      "description": "Hasil opini laporan keuangan eksternal tidak mencapai target WTP. Ditemukan opini WDP (Wajar Dengan Pengecualian).",
+      "parameterViolated": "Opini Audit Keuangan Eksternal oleh KAP = WTP (Wajar Tanpa Pengecualian)",
+      "recommendation": "Lakukan due diligence dan re-audit keuangan secara menyeluruh, perbaiki sistem administrasi pencatatan kas keluar-masuk.",
+      "assignedToUnit": "Kantor Akuntan Publik (Unit 6)",
+      "slaDays": 30,
+      "createdAt": "2026-05-02T12:15:00Z",
+      "dueDate": "2026-06-01T12:15:00Z",
+      "status": "Breached",
+      "evidenceOfCompliance": null,
+      "resolvedAt": null,
+      "escalated": true,
+      "escalationNotes": "SLA Terlampaui (Breached). Tiket otomatis dieksalasi ke Dashboard Rektor / Pimpinan Yayasan untuk intervensi struktural."
+    },
+    {
+      "id": "TCK-002",
+      "standardId": "IKU-008",
+      "auditId": "AUD-008",
+      "description": "Persentase sertifikasi kompetensi tenaga kependidikan (Tendik) di bawah target (Capaian: 65% vs Target: 70%).",
+      "parameterViolated": "Persentase Tenaga Kependidikan bersertifikasi Keahlian >= 70%",
+      "recommendation": "Sediakan program pelatihan khusus sertifikasi keahlian administrasi/teknis untuk seluruh Tendik secara berkala.",
+      "assignedToUnit": "Biro Administrasi Kepegawaian",
+      "slaDays": 30,
+      "createdAt": "2026-06-02T15:02:13.123Z",
+      "dueDate": "2026-07-02T15:02:13.123Z",
+      "status": "Active",
+      "evidenceOfCompliance": null,
+      "resolvedAt": null,
+      "escalated": false,
+      "escalationNotes": null
+    }
+  ],
+  "historicalCycles": [
+    {
+      "cycle": "Siklus 2023",
+      "standardId": "IKU-002",
+      "targetValue": 80,
+      "actualValue": 82
+    },
+    {
+      "cycle": "Siklus 2024",
+      "standardId": "IKU-002",
+      "targetValue": 80,
+      "actualValue": 90
+    },
+    {
+      "cycle": "Siklus 2025",
+      "standardId": "IKU-002",
+      "targetValue": 80,
+      "actualValue": 100
+    }
+  ],
+  "versions": [
+    {
+      "versionName": "Versi Standard 2025",
+      "frozenAt": "2025-12-31T23:59:59Z",
+      "standardsCount": 5,
+      "standards": [
+        {
+          "id": "IKU-001",
+          "rumpun": "Pendidikan",
+          "targetValue": 35
+        },
+        {
+          "id": "IKU-002",
+          "rumpun": "Pendidikan",
+          "targetValue": 70
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,519 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Page-1" id="eDf2RwwRPEsT32K6_vCZ">
+    <mxGraphModel dx="6807" dy="4213" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-112" edge="1" parent="1" source="Fpe68sqWUD4o5jB_4a0k-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="Fpe68sqWUD4o5jB_4a0k-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-2" parent="1" style="whiteSpace=wrap;html=1;aspect=fixed;" value="&lt;font style=&quot;font-size: 25px;&quot;&gt;SPMI&lt;/font&gt;" vertex="1">
+          <mxGeometry height="140" width="140" x="3210" y="55" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-135" edge="1" parent="1" source="Fpe68sqWUD4o5jB_4a0k-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="4070" y="280" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-3" parent="1" style="whiteSpace=wrap;html=1;aspect=fixed;" value="&lt;font style=&quot;font-size: 25px;&quot;&gt;SPME&lt;/font&gt;" vertex="1">
+          <mxGeometry height="142.5" width="142.5" x="3770" y="53.75" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-4" parent="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" value="Penetapan standar mutu" vertex="1">
+          <mxGeometry height="90" width="90" x="380" y="630" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-5" parent="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" value="Pelaksanaan standar mutu" vertex="1">
+          <mxGeometry height="90" width="90" x="240" y="505" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-6" parent="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" value="Evaluasi pemenuhan standar" vertex="1">
+          <mxGeometry height="90" width="90" x="290" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-7" parent="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" value="Pengendalian pelaksana standar" vertex="1">
+          <mxGeometry height="90" width="90" x="490" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-8" parent="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" value="Peningkatan stadar mutu" vertex="1">
+          <mxGeometry height="90" width="90" x="510" y="505" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-9" edge="1" parent="1" source="Fpe68sqWUD4o5jB_4a0k-4" style="curved=1;endArrow=classic;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="Fpe68sqWUD4o5jB_4a0k-5" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <Array as="points">
+              <mxPoint x="320" y="670" />
+            </Array>
+            <mxPoint x="270" y="700" as="sourcePoint" />
+            <mxPoint x="320" y="650" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-10" edge="1" parent="1" source="Fpe68sqWUD4o5jB_4a0k-5" style="curved=1;endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=1;entryDx=0;entryDy=0;" target="Fpe68sqWUD4o5jB_4a0k-6" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <Array as="points">
+              <mxPoint x="280" y="450" />
+            </Array>
+            <mxPoint x="247.5" y="515" as="sourcePoint" />
+            <mxPoint x="152.5" y="460" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-11" edge="1" parent="1" source="Fpe68sqWUD4o5jB_4a0k-6" style="curved=1;endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="Fpe68sqWUD4o5jB_4a0k-7" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <Array as="points">
+              <mxPoint x="430" y="320" />
+            </Array>
+            <mxPoint x="385" y="453" as="sourcePoint" />
+            <mxPoint x="403" y="370" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-12" edge="1" parent="1" source="Fpe68sqWUD4o5jB_4a0k-7" style="curved=1;endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="Fpe68sqWUD4o5jB_4a0k-8" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <Array as="points">
+              <mxPoint x="600" y="450" />
+            </Array>
+            <mxPoint x="440" y="502" as="sourcePoint" />
+            <mxPoint x="510" y="502" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-13" edge="1" parent="1" source="Fpe68sqWUD4o5jB_4a0k-8" style="curved=1;endArrow=classic;html=1;rounded=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" target="Fpe68sqWUD4o5jB_4a0k-4" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <Array as="points">
+              <mxPoint x="540" y="650" />
+            </Array>
+            <mxPoint x="510" y="650" as="sourcePoint" />
+            <mxPoint x="560" y="690" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-14" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Fase 1" vertex="1">
+          <mxGeometry height="30" width="60" x="395" y="595" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-15" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Fase 2" vertex="1">
+          <mxGeometry height="30" width="60" x="330" y="535" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-16" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Fase 3" vertex="1">
+          <mxGeometry height="30" width="60" x="320" y="410" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-17" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Fase 4" vertex="1">
+          <mxGeometry height="30" width="60" x="450" y="390" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-18" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Fase 5" vertex="1">
+          <mxGeometry height="30" width="60" x="450" y="535" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-19" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 19px;&quot;&gt;Siklus PPEPP&lt;/font&gt;" vertex="1">
+          <mxGeometry height="60" width="120" x="370" y="450" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-106" edge="1" parent="1" source="Fpe68sqWUD4o5jB_4a0k-20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="Fpe68sqWUD4o5jB_4a0k-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-20" parent="1" style="whiteSpace=wrap;html=1;aspect=fixed;" value="kepala BPN (Badan Penjamin Mutu) menetapkan Standar Pendidikan Tinggi berdasarkan 3 rumpun utama: Pendidikan, Penelitian, dan pengabdian masyarakat" vertex="1">
+          <mxGeometry height="140" width="140" x="200" y="720" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-105" edge="1" parent="1" source="Fpe68sqWUD4o5jB_4a0k-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="Fpe68sqWUD4o5jB_4a0k-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-21" parent="1" style="whiteSpace=wrap;html=1;aspect=fixed;" value="dari ketiga rumpun terbuat 7 SN dikti dari kementrian yang dijadikan patokan yang bisa dikembangkan lagi tergantung masing-masing kampus&lt;br&gt;&lt;br&gt;&lt;div&gt;1. STANDAR KOMPETENSI LULUSAN&lt;/div&gt;&lt;div&gt;2. STANDAR PROSES PEMBELAJARAN&lt;/div&gt;&lt;div&gt;3. STANDAR PENGELOLAAN&lt;/div&gt;&lt;div&gt;4. STANDAR ISI&lt;/div&gt;&lt;div&gt;5. STANDAR DOSEN DAN TENAGA KEPENDIDIKAN&lt;/div&gt;&lt;div&gt;6. STANDAR SARANA DAN PRASARANA PENDIDIKAN TINGGI&lt;/div&gt;&lt;div&gt;7. STANDAR PEMBIAYAAN PENDIDIKAN TINGGI&lt;/div&gt;" vertex="1">
+          <mxGeometry height="250" width="250" x="490" y="770" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-22" parent="1" style="whiteSpace=wrap;html=1;aspect=fixed;" value="setelah ditetapkan standar maka setiap unit di kampus melaksanakan aktivitas untuk mencapai standar yang sudah ditetapkan di awal&amp;nbsp;" vertex="1">
+          <mxGeometry height="150" width="150" x="-70" y="310" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-23" edge="1" parent="1" source="Fpe68sqWUD4o5jB_4a0k-22" style="curved=1;endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="Fpe68sqWUD4o5jB_4a0k-5" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <Array as="points">
+              <mxPoint x="90" y="460" />
+              <mxPoint x="120" y="480" />
+              <mxPoint x="160" y="380" />
+              <mxPoint x="190" y="490" />
+            </Array>
+            <mxPoint x="100" y="480" as="sourcePoint" />
+            <mxPoint x="150" y="430" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-24" parent="1" style="whiteSpace=wrap;html=1;aspect=fixed;" value="setelah ditetapkan standar maka setiap unit di kampus melaksanakan aktivitas baik itu akdemik yaitu prodi-prodi dan non akademik yaitu keuangan dan kemahasiswaan untuk mencapai standar yang sudah ditetapkan di awal&amp;nbsp;" vertex="1">
+          <mxGeometry height="150" width="150" x="-360" y="480" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-25" parent="1" style="whiteSpace=wrap;html=1;aspect=fixed;" value="Entitas AKADEMIK" vertex="1">
+          <mxGeometry height="80" width="80" x="-425" y="680" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-26" parent="1" style="whiteSpace=wrap;html=1;aspect=fixed;" value="Entitas NON-AKADEMIK" vertex="1">
+          <mxGeometry height="80" width="80" x="-230" y="680" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-27" parent="1" style="whiteSpace=wrap;html=1;aspect=fixed;" value="Untuk entitas akademik disebut tridharma yang meliputi :&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;1. Pendidikan&lt;/div&gt;&lt;div&gt;2. Penelitian&lt;/div&gt;&lt;div&gt;3. Pengabdian Kepada Masyarakat&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="160" width="160" x="-799" y="710" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-28" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Lalu dari ketiga entitas ini akan memiliki standarnya masing-masing" vertex="1">
+          <mxGeometry height="160" width="141" x="-950" y="710" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-29" parent="1" style="whiteSpace=wrap;html=1;aspect=fixed;" value="Standar Pendidikan :&lt;div&gt;&lt;br&gt;&lt;div&gt;1. STANDAR KOMPETENSI LULUSAN&lt;/div&gt;&lt;div&gt;2. STANDAR PROSES PEMBELAJARAN&lt;/div&gt;&lt;div&gt;3. STANDAR PENILAIAN&lt;/div&gt;&lt;div&gt;4. STANDAR PENGELOLAAN&lt;/div&gt;&lt;div&gt;5. STANDAR ISI&lt;/div&gt;&lt;div&gt;6. STANDAR DOSEN DAN TENAGA KEPENDIDIKAN&lt;/div&gt;&lt;div&gt;7. STANDAR SARANA DAN PRASARANA&lt;/div&gt;&lt;div&gt;8. STANDAR PEMBIAYAAN&lt;/div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="240" width="240" x="-1090" y="920" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-30" parent="1" style="whiteSpace=wrap;html=1;aspect=fixed;" value="Standar Penelitian :&lt;div&gt;&lt;br&gt;&lt;div&gt;1. STANDAR LUARAN PENELITIAN&lt;/div&gt;&lt;div&gt;2. STANDAR PROSES PENELITIAN&lt;/div&gt;&lt;div&gt;3. STANDAR MASUKAN PENELITIAN&lt;/div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="240" width="240" x="-809" y="920" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-31" parent="1" style="whiteSpace=wrap;html=1;aspect=fixed;" value="Standar Pengabdian masyarakat :&lt;div&gt;&lt;br&gt;&lt;div&gt;1. STANDAR LUARAN PENGABDIAN MASYARAKAT&lt;/div&gt;&lt;div&gt;2. STANDAR PROSES PENGABDIAN MASYARAKAT&lt;/div&gt;&lt;div&gt;3. STANDAR MASUKAN PENGABDIAN MASYARAKAT&lt;/div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="240" width="240" x="-530" y="920" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-32" edge="1" parent="1" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="Fpe68sqWUD4o5jB_4a0k-27" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="-719" y="900" as="sourcePoint" />
+            <mxPoint x="-720" y="880" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-33" edge="1" parent="1" style="endArrow=none;html=1;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="-980" y="900" as="sourcePoint" />
+            <mxPoint x="-410" y="900" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-34" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="-980" y="900" as="sourcePoint" />
+            <mxPoint x="-980" y="920" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-35" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="-689.1600000000001" y="900" as="sourcePoint" />
+            <mxPoint x="-689.1600000000001" y="920" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-36" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="-410.12" y="900" as="sourcePoint" />
+            <mxPoint x="-410.12" y="920" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-37" parent="1" style="whiteSpace=wrap;html=1;aspect=fixed;" value="Untuk entitas nonakademik meliputi :&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;1. organisasi&lt;/div&gt;&lt;div&gt;2. keuangan&lt;/div&gt;&lt;div&gt;3. kemahasiswaan&lt;/div&gt;&lt;div&gt;4. ketenagaan&lt;/div&gt;&lt;div&gt;5. sarana prasarana&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="160" width="160" x="-200" y="880" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-38" edge="1" parent="1" source="Fpe68sqWUD4o5jB_4a0k-27" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" target="Fpe68sqWUD4o5jB_4a0k-25" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="-600" y="760" as="sourcePoint" />
+            <mxPoint x="-265" y="740.0000000000005" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-39" edge="1" parent="1" source="Fpe68sqWUD4o5jB_4a0k-37" style="endArrow=classic;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" target="Fpe68sqWUD4o5jB_4a0k-26" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="-250" y="860" as="sourcePoint" />
+            <mxPoint x="-200" y="810" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-40" edge="1" parent="1" source="Fpe68sqWUD4o5jB_4a0k-24" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="Fpe68sqWUD4o5jB_4a0k-22" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="-180" y="500" as="sourcePoint" />
+            <mxPoint x="-130" y="450" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-41" parent="1" style="whiteSpace=wrap;html=1;aspect=fixed;" value="Unuk mengetahui pelaksanaan dari akivitas apakah sudah sesuai jalannya apa belum" vertex="1">
+          <mxGeometry height="120" width="120" x="170" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-42" parent="1" style="whiteSpace=wrap;html=1;aspect=fixed;" value="kepala Badan Penjamin Mutu, akan mengutus auditor untuk melakukan Audit Mutu Internal (AMI)" vertex="1">
+          <mxGeometry height="130" width="130" x="360" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-43" parent="1" style="whiteSpace=wrap;html=1;aspect=fixed;" value="AMI memiliki 7 Instrumen Penilaian yang bisa dilihat di softfile di grup dan indikator audit itu bisa diliat dari beberapa sumber internal" vertex="1">
+          <mxGeometry height="130" width="130" x="255" y="-195" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-44" parent="1" style="whiteSpace=wrap;html=1;aspect=fixed;" value="IKU" vertex="1">
+          <mxGeometry height="60" width="60" x="500" y="-240" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-45" parent="1" style="whiteSpace=wrap;html=1;aspect=fixed;" value="OBE" vertex="1">
+          <mxGeometry height="60" width="60" x="500" y="-160" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-46" parent="1" style="whiteSpace=wrap;html=1;aspect=fixed;" value="SISTER" vertex="1">
+          <mxGeometry height="60" width="60" x="500" y="-80" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-47" edge="1" parent="1" style="endArrow=none;html=1;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="440" y="-50" as="sourcePoint" />
+            <mxPoint x="440" y="-210" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-48" edge="1" parent="1" source="Fpe68sqWUD4o5jB_4a0k-43" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="380" y="-80" as="sourcePoint" />
+            <mxPoint x="440" y="-130" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-49" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="Fpe68sqWUD4o5jB_4a0k-44" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="440" y="-210" as="sourcePoint" />
+            <mxPoint x="465" y="-240" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-50" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="440" y="-130.26999999999998" as="sourcePoint" />
+            <mxPoint x="500" y="-130.26999999999998" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-51" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="440" y="-50.27" as="sourcePoint" />
+            <mxPoint x="500" y="-50.27" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-52" edge="1" parent="1" source="Fpe68sqWUD4o5jB_4a0k-41" style="curved=1;endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="Fpe68sqWUD4o5jB_4a0k-42" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <Array as="points">
+              <mxPoint x="380" y="230" />
+              <mxPoint x="270" y="130" />
+            </Array>
+            <mxPoint x="220" y="140" as="sourcePoint" />
+            <mxPoint x="270" y="90" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-53" edge="1" parent="1" source="Fpe68sqWUD4o5jB_4a0k-42" style="curved=1;endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="Fpe68sqWUD4o5jB_4a0k-43" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <Array as="points">
+              <mxPoint x="380" y="50" />
+              <mxPoint x="290" y="-10" />
+            </Array>
+            <mxPoint x="290" y="40" as="sourcePoint" />
+            <mxPoint x="340" y="-10" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-54" edge="1" parent="1" source="Fpe68sqWUD4o5jB_4a0k-41" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.041;entryY=0.325;entryDx=0;entryDy=0;entryPerimeter=0;" target="Fpe68sqWUD4o5jB_4a0k-6" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="320" y="390" as="sourcePoint" />
+            <mxPoint x="370" y="340" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-55" parent="1" style="whiteSpace=wrap;html=1;aspect=fixed;" value="Ami akan Mengecek audit dan memberikan hasil berupa poin apa saja yang tidak memenuhi standar" vertex="1">
+          <mxGeometry height="120" width="120" x="610" y="115" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-56" edge="1" parent="1" source="Fpe68sqWUD4o5jB_4a0k-63" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="Fpe68sqWUD4o5jB_4a0k-64">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-57" edge="1" parent="1" source="Fpe68sqWUD4o5jB_4a0k-63" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="Fpe68sqWUD4o5jB_4a0k-65">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-58" edge="1" parent="1" source="Fpe68sqWUD4o5jB_4a0k-73" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="Fpe68sqWUD4o5jB_4a0k-69">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-59" edge="1" parent="1" source="Fpe68sqWUD4o5jB_4a0k-75" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="Fpe68sqWUD4o5jB_4a0k-70">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-60" edge="1" parent="1" source="Fpe68sqWUD4o5jB_4a0k-77" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="Fpe68sqWUD4o5jB_4a0k-71">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-61" edge="1" parent="1" source="Fpe68sqWUD4o5jB_4a0k-63" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="Fpe68sqWUD4o5jB_4a0k-80">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-62" edge="1" parent="1" source="Fpe68sqWUD4o5jB_4a0k-63" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="Fpe68sqWUD4o5jB_4a0k-81">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-63" parent="1" style="whiteSpace=wrap;html=1;aspect=fixed;" value="Setiap temuan audit yang tidak memenuhi standar otomatis akan diubah oleh sistem menjadi sebuah tiket kerja digital" vertex="1">
+          <mxGeometry height="120" width="120" x="940" y="-140" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-64" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Tiket tidak bisa dibuat manual oleh staf; sistem yang menggenerasinya secara otomatis berdasarkan ID Standar yang bermasalah untuk menjaga objektivitas." vertex="1">
+          <mxGeometry height="100" width="200" x="610" y="-460" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-65" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Mencakup deskripsi temuan, parameter IKU yang dilanggar, rekomendasi perbaikan dari auditor, unit penanggung jawab, serta batas waktu penyelesaian (SLA) yang mengikat secara sistem." vertex="1">
+          <mxGeometry height="100" width="200" x="820" y="-520" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-66" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Aturan Sistem" vertex="1">
+          <mxGeometry height="30" width="60" x="640" y="-345" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-67" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Isi Tiket" vertex="1">
+          <mxGeometry height="30" width="60" x="930" y="-410" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-68" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="masuk ke divisi Pengembangan Karir Dosen" vertex="1">
+          <mxGeometry height="50" width="100" x="560" y="-75" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-69" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;span data-path-to-node=&quot;12,0,1,0&quot;&gt;&lt;span class=&quot;citation-614&quot;&gt;Jika sistem mendeteksi standar SDM/CPL prodi melemah karena kekurangan dosen berkualifikasi, tiket otomatis di-routing ke &lt;/span&gt;&lt;b data-path-to-node=&quot;12,0,1,0&quot; data-index-in-node=&quot;155&quot;&gt;&lt;span class=&quot;citation-614&quot;&gt;Lembaga Konsultan Pengembangan Karier Dosen (Unit 4)&lt;/span&gt;&lt;/b&gt;&lt;span class=&quot;citation-614&quot;&gt; untuk memicu program akselerasi fungsional dosen&lt;/span&gt;&lt;/span&gt;&lt;span data-path-to-node=&quot;12,0,1,1&quot;&gt;&lt;span class=&quot;citation-614 citation-end-614&quot;&gt;&lt;sup class=&quot;superscript&quot; data-turn-source-index=&quot;2&quot;&gt;&lt;/sup&gt;&lt;/span&gt;&lt;/span&gt;&lt;span data-path-to-node=&quot;12,0,1,2&quot;&gt;.&lt;/span&gt;" vertex="1">
+          <mxGeometry height="115" width="230" x="1260" y="-430" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-70" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;span data-path-to-node=&quot;12,1,1,0&quot;&gt;&lt;span class=&quot;citation-613&quot;&gt;Jika dalam audit ditemukan dokumen legal (seperti SK Yayasan atau MoU kerja sama) yang bermasalah atau memiliki celah hukum, tiket otomatis dilempar ke &lt;/span&gt;&lt;b data-path-to-node=&quot;12,1,1,0&quot; data-index-in-node=&quot;186&quot;&gt;&lt;span class=&quot;citation-613&quot;&gt;Lembaga Konsultan Bantuan Hukum Perguruan Tinggi (Unit 3)&lt;/span&gt;&lt;/b&gt;&lt;span class=&quot;citation-613&quot;&gt; untuk diverifikasi dan diperbaiki konten hukumnya&lt;/span&gt;&lt;/span&gt;&lt;span data-path-to-node=&quot;12,1,1,1&quot;&gt;&lt;span class=&quot;citation-613 citation-end-613&quot;&gt;&lt;sup class=&quot;superscript&quot; data-turn-source-index=&quot;3&quot;&gt;&lt;/sup&gt;&lt;sup class=&quot;superscript&quot; data-turn-source-index=&quot;3&quot;&gt;&lt;/sup&gt;&lt;sup class=&quot;superscript&quot; data-turn-source-index=&quot;3&quot;&gt;&lt;/sup&gt;&lt;/span&gt;&lt;/span&gt;&lt;span data-path-to-node=&quot;12,1,1,2&quot;&gt;.&lt;/span&gt;" vertex="1">
+          <mxGeometry height="125" width="250" x="1550" y="-142.5" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-71" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;span class=&quot;citation-612&quot;&gt;Jika standar non-akademik di bidang keuangan mendeteksi adanya ketidaksesuaian laporan, tiket akan terintegrasi ke &lt;/span&gt;&lt;b data-path-to-node=&quot;12,2,1,0&quot; data-index-in-node=&quot;146&quot;&gt;&lt;span class=&quot;citation-612&quot;&gt;Kantor Akuntan Publik (Unit 6)&lt;/span&gt;&lt;/b&gt;&lt;span class=&quot;citation-612&quot;&gt; untuk memicu proses &lt;/span&gt;&lt;i data-path-to-node=&quot;12,2,1,0&quot; data-index-in-node=&quot;197&quot;&gt;&lt;span class=&quot;citation-612&quot;&gt;due diligence&lt;/span&gt;&lt;/i&gt;&lt;span class=&quot;citation-612&quot;&gt; atau audit keuangan yang lebih mendalam.&lt;/span&gt;" vertex="1">
+          <mxGeometry height="125" width="250" x="1560" y="2.5" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-72" edge="1" parent="1" source="Fpe68sqWUD4o5jB_4a0k-63" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="Fpe68sqWUD4o5jB_4a0k-73" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1060" y="-80" as="sourcePoint" />
+            <mxPoint x="1270" y="-177" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-73" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Masalah Kualifikasi/Rasio Dosen" vertex="1">
+          <mxGeometry height="50" width="100" x="1110" y="-202.5" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-74" edge="1" parent="1" source="Fpe68sqWUD4o5jB_4a0k-63" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="Fpe68sqWUD4o5jB_4a0k-75" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1060" y="-80" as="sourcePoint" />
+            <mxPoint x="1270" y="-27" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-75" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Masalah Dokumen Legalitas Formal" vertex="1">
+          <mxGeometry height="50" width="100" x="1330" y="-105" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-76" edge="1" parent="1" source="Fpe68sqWUD4o5jB_4a0k-63" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="Fpe68sqWUD4o5jB_4a0k-77" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1060" y="-80" as="sourcePoint" />
+            <mxPoint x="1270" y="123" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-77" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Masalah Transparansi Keuangan" vertex="1">
+          <mxGeometry height="50" width="100" x="1325" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-78" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 8px;&quot;&gt;Automated Ticket Matrix Generation&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="80" x="920" y="-202.5" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-79" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 8px;&quot;&gt;Cross-Unit Intelligent Routing (Sinergitas Ekosistem)&lt;br&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="80" x="1070" y="-130" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-80" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Unit pengelola diberikan waktu (misal: 30 hari kerja) untuk mengunggah bukti perbaikan (&lt;i data-path-to-node=&quot;15,0,0&quot; data-index-in-node=&quot;104&quot;&gt;evidence of compliance&lt;/i&gt;) ke dalam sistem." vertex="1">
+          <mxGeometry height="100" width="200" x="820" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-81" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Jika mendekati batas waktu tiket belum diselesaikan, sistem akan memberikan peringatan bertahap. Jika SLA terlampaui (&lt;i data-path-to-node=&quot;15,1,0&quot; data-index-in-node=&quot;138&quot;&gt;breached&lt;/i&gt;), tiket beserta laporan kelalaian otomatis di-eskalasi ke dashboard &lt;b data-path-to-node=&quot;15,1,0&quot; data-index-in-node=&quot;215&quot;&gt;Rektor / Pimpinan Yayasan&lt;/b&gt; untuk intervensi struktural." vertex="1">
+          <mxGeometry height="115" width="230" x="1060" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-82" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="SLA Berjenjang" vertex="1">
+          <mxGeometry height="30" width="60" x="850" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-83" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Mekanisme Eskalasi" vertex="1">
+          <mxGeometry height="30" width="60" x="1180" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-84" edge="1" parent="1" source="Fpe68sqWUD4o5jB_4a0k-55" style="curved=1;endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=1;entryDx=0;entryDy=0;" target="Fpe68sqWUD4o5jB_4a0k-63" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <Array as="points">
+              <mxPoint x="840" y="120" />
+              <mxPoint x="710" y="10" />
+            </Array>
+            <mxPoint x="720" y="190" as="sourcePoint" />
+            <mxPoint x="770" y="140" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-85" edge="1" parent="1" source="Fpe68sqWUD4o5jB_4a0k-55" style="endArrow=classic;html=1;rounded=0;entryX=0.717;entryY=0.043;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0;exitY=1;exitDx=0;exitDy=0;" target="Fpe68sqWUD4o5jB_4a0k-7" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="490" y="260" as="sourcePoint" />
+            <mxPoint x="540" y="210" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-86" edge="1" parent="1" source="Fpe68sqWUD4o5jB_4a0k-89" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="Fpe68sqWUD4o5jB_4a0k-94">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-87" edge="1" parent="1" source="Fpe68sqWUD4o5jB_4a0k-89" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="Fpe68sqWUD4o5jB_4a0k-96">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-88" edge="1" parent="1" source="Fpe68sqWUD4o5jB_4a0k-89" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="Fpe68sqWUD4o5jB_4a0k-98">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-103" edge="1" parent="1" source="Fpe68sqWUD4o5jB_4a0k-89" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="Fpe68sqWUD4o5jB_4a0k-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-89" parent="1" style="whiteSpace=wrap;html=1;aspect=fixed;" value="Setelah Pengendalian Pelaksanaan Standar akan masuk ke fase Peningkatan Standar Mutu. di fase ini akan&amp;nbsp;&lt;span data-path-to-node=&quot;1,2&quot;&gt;&lt;span class=&quot;citation-642&quot;&gt;berfungsi mengubah data historis dari siklus PPEPP sebelumnya menjadi rekomendasi peningkatan standar yang presisi, terukur, dan berorientasi pada status &lt;/span&gt;&lt;b data-path-to-node=&quot;1,2&quot; data-index-in-node=&quot;164&quot;&gt;&lt;span class=&quot;citation-642&quot;&gt;Terakreditasi Unggul&lt;/span&gt;&lt;/b&gt;&lt;/span&gt;&lt;span data-path-to-node=&quot;1,3&quot;&gt;&lt;span class=&quot;citation-642 citation-end-642&quot;&gt;&lt;sup class=&quot;superscript&quot; data-turn-source-index=&quot;2&quot;&gt;&lt;/sup&gt;&lt;sup class=&quot;superscript&quot; data-turn-source-index=&quot;2&quot;&gt;&lt;/sup&gt;&lt;sup class=&quot;superscript&quot; data-turn-source-index=&quot;2&quot;&gt;&lt;/sup&gt;&lt;/span&gt;&lt;/span&gt;&lt;span data-path-to-node=&quot;1,4&quot;&gt;.&lt;/span&gt;" vertex="1">
+          <mxGeometry height="190" width="190" x="660" y="455" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-90" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Jika sebuah Program Studi atau Unit Kerja non-akademik secara konsisten (misal: 3 siklus berturut-turut) mencapai angka 100% pada suatu standar, sistem akan mendeteksi &lt;i data-path-to-node=&quot;7,0,0&quot; data-index-in-node=&quot;187&quot;&gt;delta&lt;/i&gt; positif tersebut." vertex="1">
+          <mxGeometry height="115" width="230" x="1275" y="390" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-91" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Sistem akan menyarankan Kepala BPM untuk menaikkan parameter standar tersebut sebesar 10-15% atau mengubah statusnya dari &quot;Memenuhi SN Dikti&quot; menjadi &quot;Melampaui SN Dikti&quot;" vertex="1">
+          <mxGeometry height="115" width="230" x="1275" y="530" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-92" edge="1" parent="1" source="Fpe68sqWUD4o5jB_4a0k-94" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="Fpe68sqWUD4o5jB_4a0k-90">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-93" edge="1" parent="1" source="Fpe68sqWUD4o5jB_4a0k-94" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="Fpe68sqWUD4o5jB_4a0k-91">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-94" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Predictive Delta Analytics" vertex="1">
+          <mxGeometry height="50" width="100" x="920" y="460" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-95" edge="1" parent="1" source="Fpe68sqWUD4o5jB_4a0k-96" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="Fpe68sqWUD4o5jB_4a0k-101">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-96" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="AI-Assisted Standard Elevation" vertex="1">
+          <mxGeometry height="40" width="80" x="1000" y="590" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-97" edge="1" parent="1" source="Fpe68sqWUD4o5jB_4a0k-98" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="Fpe68sqWUD4o5jB_4a0k-102">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-98" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Standard Versioning Control" vertex="1">
+          <mxGeometry height="40" width="80" x="920" y="847.5" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-99" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Analisis Otomatis" vertex="1">
+          <mxGeometry height="40" width="80" x="1160" y="410" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-100" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Rekomendasi Pintar" vertex="1">
+          <mxGeometry height="40" width="80" x="1160" y="550" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-101" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;span data-path-to-node=&quot;10,0,0,1&quot;&gt;&lt;span class=&quot;citation-639&quot;&gt;AI akan membaca capaian naratif dari siklus evaluasi sebelumnya, membandingkannya dengan instrumen terbaru dari BAN-PT/LAM &lt;/span&gt;&lt;/span&gt;&lt;span data-path-to-node=&quot;10,0,0,2&quot;&gt;&lt;span class=&quot;citation-639 citation-end-639&quot;&gt;&lt;sup class=&quot;superscript&quot; data-turn-source-index=&quot;5&quot;&gt;&lt;/sup&gt;&lt;/span&gt;&lt;/span&gt;&lt;span data-path-to-node=&quot;10,0,0,3&quot;&gt;&lt;span class=&quot;citation-638&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span data-path-to-node=&quot;10,0,0,4&quot;&gt;&lt;span class=&quot;citation-638&quot;&gt;, lalu men-draft draf usulan standar baru yang lebih kompetitif agar kampus siap bersaing di tingkat internasional&lt;/span&gt;&lt;/span&gt;&lt;span data-path-to-node=&quot;10,0,0,5&quot;&gt;&lt;span class=&quot;citation-638 citation-end-638&quot;&gt;&lt;sup class=&quot;superscript&quot; data-turn-source-index=&quot;6&quot;&gt;&lt;/sup&gt;&lt;/span&gt;&lt;/span&gt;&lt;span data-path-to-node=&quot;10,0,0,6&quot;&gt;.&lt;/span&gt;" vertex="1">
+          <mxGeometry height="115" width="230" x="1275" y="670" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-102" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Jika data lama ditimpa, maka riwayat Audit Mutu Internal (AMI) dari tahun-tahun sebelumnya akan rusak (&lt;i data-path-to-node=&quot;13,0,0&quot; data-index-in-node=&quot;103&quot;&gt;corrupted&lt;/i&gt;) karena kehilangan referensi parameter aslinya." vertex="1">
+          <mxGeometry height="115" width="230" x="1280" y="810" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-111" edge="1" parent="1" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;endSize=141;startSize=6;width=151;endWidth=446;strokeWidth=25;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="1930" y="153.32999999999998" as="sourcePoint" />
+            <mxPoint x="3070" y="153.32999999999998" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-114" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Sistem melakukan pemindaian berkala via API ke pangkalan data BAN-PT/LAM dan PD Dikti untuk memantau sisa masa berlaku akreditasi institusi maupun prodi" vertex="1">
+          <mxGeometry height="100" width="200" x="3430" y="550" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-117" edge="1" parent="1" source="Fpe68sqWUD4o5jB_4a0k-115" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="Fpe68sqWUD4o5jB_4a0k-114">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-115" parent="1" style="whiteSpace=wrap;html=1;aspect=fixed;" value="Observasi" vertex="1">
+          <mxGeometry height="140" width="140" x="3460" y="365" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-118" parent="1" style="whiteSpace=wrap;html=1;aspect=fixed;" value="Persiapan Dokumen &amp;amp; Triangulasi Data" vertex="1">
+          <mxGeometry height="140" width="140" x="3800" y="365" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-119" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="penarikan data-data yang diperlukan untuk akreditasi dari Unit lain dan juga SPMI" vertex="1">
+          <mxGeometry height="100" width="200" x="3770" y="550" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-120" parent="1" style="whiteSpace=wrap;html=1;aspect=fixed;" value="Validasi Kepatuhan &amp;amp; Simulasi Skor" vertex="1">
+          <mxGeometry height="140" width="140" x="4100" y="365" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-121" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Draf dokumen (Word/PDF) dibaca ulang oleh AI. Sistem memberikan laporan otomatis jika mendeteksi halaman yang kurang tanda tangan, ketidakcocokan data nominal, atau format yang salah" vertex="1">
+          <mxGeometry height="100" width="200" x="4070" y="550" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-122" parent="1" style="whiteSpace=wrap;html=1;aspect=fixed;" value="Pengajuan Prodi Baru &amp;amp; Ekstensi" vertex="1">
+          <mxGeometry height="140" width="140" x="4400" y="365" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-123" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Pengguna memasukkan draf kesiapan dosen, sarana prasarana, dan lahan ke dalam fitur &lt;i data-path-to-node=&quot;15,0,0&quot; data-index-in-node=&quot;107&quot;&gt;Simulasi Buka Prodi Baru&lt;/i&gt;. Sistem mengeluarkan persentase peluang lolos berdasarkan aturan Kemdikbud" vertex="1">
+          <mxGeometry height="100" width="200" x="4370" y="550" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-124" parent="1" style="whiteSpace=wrap;html=1;aspect=fixed;" value="Pasca-Akreditasi &amp;amp; Pelaporan" vertex="1">
+          <mxGeometry height="140" width="140" x="4675" y="365" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-125" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Sistem mencatat secara formal masa berlaku status (5 tahun untuk program studi dan 8 tahun untuk institusi) ke dalam arsitektur database." vertex="1">
+          <mxGeometry height="100" width="200" x="4645" y="550" as="geometry" />
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-130" edge="1" parent="1" style="endArrow=none;html=1;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="3530" y="280" as="sourcePoint" />
+            <mxPoint x="4750" y="280" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-131" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="Fpe68sqWUD4o5jB_4a0k-115" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="3530" y="280" as="sourcePoint" />
+            <mxPoint x="3670" y="320" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-132" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;entryX=0.545;entryY=0.007;entryDx=0;entryDy=0;entryPerimeter=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="3869.76" y="279.02" as="sourcePoint" />
+            <mxPoint x="3870.0599999999995" y="365" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-133" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;entryX=0.545;entryY=0.007;entryDx=0;entryDy=0;entryPerimeter=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="4169.58" y="279.02" as="sourcePoint" />
+            <mxPoint x="4169.879999999999" y="365" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-134" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;entryX=0.545;entryY=0.007;entryDx=0;entryDy=0;entryPerimeter=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="4469.58" y="279.02" as="sourcePoint" />
+            <mxPoint x="4469.879999999999" y="365" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Fpe68sqWUD4o5jB_4a0k-136" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;entryX=0.545;entryY=0.007;entryDx=0;entryDy=0;entryPerimeter=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="4744.57" y="279.02" as="sourcePoint" />
+            <mxPoint x="4744.869999999999" y="365" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
