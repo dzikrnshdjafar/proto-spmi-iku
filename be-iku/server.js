@@ -83,6 +83,10 @@ const upload = multer({ storage: storage });
 
 // --- ROUTES ---
 
+app.get('/', (req, res) => {
+  res.json({ message: "SPMI IKU Intelligent Deviation Router API is active and running." });
+});
+
 // 1. Standards (Fase 1: Penetapan)
 app.get('/api/standards', (req, res) => {
   const data = readData();
