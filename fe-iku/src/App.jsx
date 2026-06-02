@@ -1,21 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  ShieldCheck, 
-  Layers, 
-  FileText, 
-  Activity, 
-  CheckSquare, 
-  AlertTriangle, 
-  Ticket, 
-  TrendingUp, 
-  History, 
-  Plus, 
-  CloudSync, 
-  Upload, 
-  Search, 
-  ArrowRight, 
-  Clock, 
-  User, 
+import {
+  ShieldCheck,
+  Layers,
+  FileText,
+  Activity,
+  CheckSquare,
+  AlertTriangle,
+  Ticket,
+  TrendingUp,
+  History,
+  Plus,
+  CloudSync,
+  Upload,
+  Search,
+  ArrowRight,
+  Clock,
+  User,
   Bookmark,
   CheckCircle2,
   XCircle,
@@ -39,7 +39,7 @@ function App() {
   const [activeStep, setActiveStep] = useState(0); // 0: Penetapan, 1: Pelaksanaan, 2: Evaluasi, 3: Pengendalian, 4: Peningkatan
   const [selectedRumpun, setSelectedRumpun] = useState('All');
   const [selectedTicketFilter, setSelectedTicketFilter] = useState('All');
-  
+
   // Sidebar Dropdown Open/Closed States
   const [openAkademik, setOpenAkademik] = useState(true);
   const [openNonAkademik, setOpenNonAkademik] = useState(true);
@@ -518,7 +518,7 @@ function App() {
 
             {/* Dropdown 1: Akademik (Tridharma) */}
             <li>
-              <div 
+              <div
                 className={`filter-group-header ${selectedRumpun === 'Akademik' ? 'active' : ''}`}
                 onClick={(e) => {
                   // If clicking the text, we filter by 'Akademik'
@@ -546,22 +546,22 @@ function App() {
 
               {openAkademik && (
                 <ul className="filter-sub-list">
-                  <li 
-                    className={`filter-sub-item ${selectedRumpun === 'Pendidikan' ? 'active' : ''}`} 
+                  <li
+                    className={`filter-sub-item ${selectedRumpun === 'Pendidikan' ? 'active' : ''}`}
                     onClick={() => setSelectedRumpun('Pendidikan')}
                   >
                     <span>1. Pendidikan</span>
                     <span className="filter-count">{standards.filter(s => s.rumpun === 'Pendidikan').length}</span>
                   </li>
-                  <li 
-                    className={`filter-sub-item ${selectedRumpun === 'Penelitian' ? 'active' : ''}`} 
+                  <li
+                    className={`filter-sub-item ${selectedRumpun === 'Penelitian' ? 'active' : ''}`}
                     onClick={() => setSelectedRumpun('Penelitian')}
                   >
                     <span>2. Penelitian</span>
                     <span className="filter-count">{standards.filter(s => s.rumpun === 'Penelitian').length}</span>
                   </li>
-                  <li 
-                    className={`filter-sub-item ${selectedRumpun === 'Pengabdian Kepada Masyarakat' ? 'active' : ''}`} 
+                  <li
+                    className={`filter-sub-item ${selectedRumpun === 'Pengabdian Kepada Masyarakat' ? 'active' : ''}`}
                     onClick={() => setSelectedRumpun('Pengabdian Kepada Masyarakat')}
                   >
                     <span>3. Pengabdian (PkM)</span>
@@ -573,7 +573,7 @@ function App() {
 
             {/* Dropdown 2: Non-Akademik */}
             <li>
-              <div 
+              <div
                 className={`filter-group-header ${selectedRumpun === 'Non-Akademik' ? 'active' : ''}`}
                 onClick={(e) => {
                   setSelectedRumpun('Non-Akademik');
@@ -600,36 +600,36 @@ function App() {
 
               {openNonAkademik && (
                 <ul className="filter-sub-list">
-                  <li 
-                    className={`filter-sub-item ${selectedRumpun === 'Organisasi' ? 'active' : ''}`} 
+                  <li
+                    className={`filter-sub-item ${selectedRumpun === 'Organisasi' ? 'active' : ''}`}
                     onClick={() => setSelectedRumpun('Organisasi')}
                   >
                     <span>1. Organisasi</span>
                     <span className="filter-count">{standards.filter(s => s.rumpun === 'Organisasi').length}</span>
                   </li>
-                  <li 
-                    className={`filter-sub-item ${selectedRumpun === 'Keuangan' ? 'active' : ''}`} 
+                  <li
+                    className={`filter-sub-item ${selectedRumpun === 'Keuangan' ? 'active' : ''}`}
                     onClick={() => setSelectedRumpun('Keuangan')}
                   >
                     <span>2. Keuangan</span>
                     <span className="filter-count">{standards.filter(s => s.rumpun === 'Keuangan').length}</span>
                   </li>
-                  <li 
-                    className={`filter-sub-item ${selectedRumpun === 'Kemahasiswaan' ? 'active' : ''}`} 
+                  <li
+                    className={`filter-sub-item ${selectedRumpun === 'Kemahasiswaan' ? 'active' : ''}`}
                     onClick={() => setSelectedRumpun('Kemahasiswaan')}
                   >
                     <span>3. Kemahasiswaan</span>
                     <span className="filter-count">{standards.filter(s => s.rumpun === 'Kemahasiswaan').length}</span>
                   </li>
-                  <li 
-                    className={`filter-sub-item ${selectedRumpun === 'Ketenagaan' ? 'active' : ''}`} 
+                  <li
+                    className={`filter-sub-item ${selectedRumpun === 'Ketenagaan' ? 'active' : ''}`}
                     onClick={() => setSelectedRumpun('Ketenagaan')}
                   >
                     <span>4. Ketenagaan</span>
                     <span className="filter-count">{standards.filter(s => s.rumpun === 'Ketenagaan').length}</span>
                   </li>
-                  <li 
-                    className={`filter-sub-item ${selectedRumpun === 'Sarana Prasarana' ? 'active' : ''}`} 
+                  <li
+                    className={`filter-sub-item ${selectedRumpun === 'Sarana Prasarana' ? 'active' : ''}`}
                     onClick={() => setSelectedRumpun('Sarana Prasarana')}
                   >
                     <span>5. Sarana Prasarana</span>
@@ -708,8 +708,8 @@ function App() {
                           </span>
                         </td>
                         <td>
-                          <button 
-                            className="btn btn-secondary" 
+                          <button
+                            className="btn btn-secondary"
                             style={{ padding: '6px 10px', fontSize: '0.8rem' }}
                             onClick={async () => {
                               if (confirm('Hapus standar ini?')) {
@@ -739,20 +739,20 @@ function App() {
                   <p>Mencatat pencapaian capaian riil tiap unit kerja. Dukung unggah berkas legalitas atau sinkronisasi API data eksternal.</p>
                 </div>
                 <div style={{ display: 'flex', gap: '8px' }}>
-                  <button 
-                    className="btn btn-secondary" 
+                  <button
+                    className="btn btn-secondary"
                     onClick={() => handleSyncSource('SISTER')}
                     disabled={syncingSource !== null}
                   >
-                    <CloudSync size={16} /> 
+                    <CloudSync size={16} />
                     {syncingSource === 'SISTER' ? 'Sync SISTER...' : 'Simulasi Sync SISTER'}
                   </button>
-                  <button 
-                    className="btn btn-secondary" 
+                  <button
+                    className="btn btn-secondary"
                     onClick={() => handleSyncSource('OBE')}
                     disabled={syncingSource !== null}
                   >
-                    <CloudSync size={16} /> 
+                    <CloudSync size={16} />
                     {syncingSource === 'OBE' ? 'Sync OBE...' : 'Simulasi Sync Sistem OBE'}
                   </button>
                 </div>
@@ -775,7 +775,7 @@ function App() {
                     {filteredStandards.map((std) => {
                       const ach = getAchievement(std.id);
                       const isMet = ach && (
-                        std.targetType === 'text' 
+                        std.targetType === 'text'
                           ? String(ach.actualValue).toLowerCase().trim() === String(std.targetValue).toLowerCase().trim()
                           : Number(ach.actualValue) >= Number(std.targetValue)
                       );
@@ -794,17 +794,17 @@ function App() {
                           </td>
                           <td>
                             {ach && ach.evidenceUrl ? (
-                              <a 
-                                href={ach.evidenceUrl} 
-                                target="_blank" 
-                                rel="noreferrer" 
+                              <a
+                                href={ach.evidenceUrl}
+                                target="_blank"
+                                rel="noreferrer"
                                 style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', color: 'var(--primary)', fontSize: '0.85rem' }}
                               >
                                 <FileCheck size={14} /> {ach.evidenceFileName || 'Bukti_Fisik.pdf'}
                               </a>
                             ) : (
-                              <button 
-                                className="btn btn-secondary" 
+                              <button
+                                className="btn btn-secondary"
                                 style={{ padding: '6px 10px', fontSize: '0.8rem', display: 'flex', gap: '4px' }}
                                 onClick={() => {
                                   setSelectedStdForUpload(std);
@@ -853,12 +853,12 @@ function App() {
                   <h2><CheckSquare size={20} color="var(--warning)" /> Fase 3: Audit & Evaluasi Digital (Borang AMI)</h2>
                   <p>Melakukan Penilaian Audit Mutu Internal (AMI) secara otomatis. Jalankan sistem detektor deviasi/discrepancy.</p>
                 </div>
-                <button 
-                  className="btn btn-primary animate-pulse-glow" 
+                <button
+                  className="btn btn-primary animate-pulse-glow"
                   onClick={handleScanDiscrepancy}
                   disabled={scanningDiscrepancy}
                 >
-                  <Search size={16} /> 
+                  <Search size={16} />
                   {scanningDiscrepancy ? 'Scanning Capaian...' : 'Jalankan Auto-Discrepancy Scanner'}
                 </button>
               </div>
@@ -880,9 +880,9 @@ function App() {
                     {filteredStandards.map((std) => {
                       const ach = getAchievement(std.id);
                       const audit = auditForms.find(af => af.standardId === std.id);
-                      
+
                       const isMet = ach && (
-                        std.targetType === 'text' 
+                        std.targetType === 'text'
                           ? String(ach.actualValue).toLowerCase().trim() === String(std.targetValue).toLowerCase().trim()
                           : Number(ach.actualValue) >= Number(std.targetValue)
                       );
@@ -985,8 +985,8 @@ function App() {
                           <span>SLA: {ticket.slaDays} hari</span>
                         </div>
                         <div style={{ display: 'flex', gap: '4px' }}>
-                          <button 
-                            className="btn btn-success" 
+                          <button
+                            className="btn btn-success"
                             style={{ padding: '4px 8px', fontSize: '0.75rem' }}
                             onClick={() => {
                               setSelectedTicketForResolve(ticket);
@@ -995,8 +995,8 @@ function App() {
                           >
                             Resolve
                           </button>
-                          <button 
-                            className="btn btn-secondary" 
+                          <button
+                            className="btn btn-secondary"
                             style={{ padding: '4px 8px', fontSize: '0.75rem' }}
                             onClick={() => handleEscalateTicket(ticket.id)}
                           >
@@ -1080,8 +1080,8 @@ function App() {
                         <b>Peringatan Rektor:</b> {ticket.escalationNotes}
                       </div>
                       <div className="ticket-footer">
-                        <button 
-                          className="btn btn-success" 
+                        <button
+                          className="btn btn-success"
                           style={{ padding: '6px 12px', width: '100%' }}
                           onClick={() => {
                             setSelectedTicketForResolve(ticket);
@@ -1122,7 +1122,7 @@ function App() {
                   <h3 style={{ fontSize: '1.1rem', display: 'flex', alignItems: 'center', gap: '6px' }}>
                     <Sparkles size={18} color="var(--info)" /> Rekomendasi Peningkatan Target (AI-Assisted)
                   </h3>
-                  
+
                   {predictiveRecs.map((rec) => (
                     <div key={rec.standardId} className="predictive-card glass-panel animate-slide-in">
                       <div className="predictive-header">
@@ -1130,8 +1130,8 @@ function App() {
                           <span className="badge badge-info" style={{ marginBottom: '6px' }}>Delta Positif Terdeteksi</span>
                           <h4 style={{ fontSize: '1rem', color: '#fff' }}>{rec.nama}</h4>
                         </div>
-                        <button 
-                          className="btn btn-success" 
+                        <button
+                          className="btn btn-success"
                           style={{ padding: '6px 12px', fontSize: '0.8rem' }}
                           onClick={() => handleElevateStandardTarget(rec)}
                         >
@@ -1213,9 +1213,9 @@ function App() {
               <div className="modal-body">
                 <div className="form-group-full">
                   <label>Nama Indikator / Standar IKU*</label>
-                  <input 
-                    type="text" 
-                    placeholder="Contoh: Persentase Dosen Berkualifikasi S3" 
+                  <input
+                    type="text"
+                    placeholder="Contoh: Persentase Dosen Berkualifikasi S3"
                     value={newStd.nama}
                     onChange={e => setNewStd({ ...newStd, nama: e.target.value })}
                     required
@@ -1250,9 +1250,9 @@ function App() {
                 </div>
                 <div className="form-group-full">
                   <label>Formula & Rumus Perhitungan</label>
-                  <input 
-                    type="text" 
-                    placeholder="Contoh: Jumlah Dosen Doktor / Total Dosen * 100" 
+                  <input
+                    type="text"
+                    placeholder="Contoh: Jumlah Dosen Doktor / Total Dosen * 100"
                     value={newStd.formula}
                     onChange={e => setNewStd({ ...newStd, formula: e.target.value })}
                   />
@@ -1278,9 +1278,9 @@ function App() {
                 <div className="form-grid">
                   <div className="form-group">
                     <label>Nilai Sasaran Target*</label>
-                    <input 
-                      type="text" 
-                      placeholder="Contoh: 40 atau WTP" 
+                    <input
+                      type="text"
+                      placeholder="Contoh: 40 atau WTP"
                       value={newStd.targetValue}
                       onChange={e => setNewStd({ ...newStd, targetValue: e.target.value })}
                       required
@@ -1288,9 +1288,9 @@ function App() {
                   </div>
                   <div className="form-group">
                     <label>Unit Penanggung Jawab (PIC)*</label>
-                    <input 
-                      type="text" 
-                      placeholder="Contoh: Biro Kepegawaian / Prodi S1" 
+                    <input
+                      type="text"
+                      placeholder="Contoh: Biro Kepegawaian / Prodi S1"
                       value={newStd.unitPenanggungJawab}
                       onChange={e => setNewStd({ ...newStd, unitPenanggungJawab: e.target.value })}
                       required
@@ -1330,9 +1330,9 @@ function App() {
 
                 <div className="form-group-full">
                   <label>Capaian Riil Saat Ini*</label>
-                  <input 
-                    type="text" 
-                    placeholder="Masukkan angka atau teks kualitatif..." 
+                  <input
+                    type="text"
+                    placeholder="Masukkan angka atau teks kualitatif..."
                     onChange={e => {
                       setSelectedStdForUpload({ ...selectedStdForUpload, tempValue: e.target.value });
                     }}
@@ -1342,9 +1342,9 @@ function App() {
 
                 <div className="form-group-full">
                   <label>Link Bukti Fisik / SK Legalitas (Drive / URL)*</label>
-                  <input 
-                    type="url" 
-                    placeholder="https://drive.google.com/..." 
+                  <input
+                    type="url"
+                    placeholder="https://drive.google.com/..."
                     value={evidenceUrl}
                     onChange={e => setEvidenceUrl(e.target.value)}
                     required
@@ -1396,9 +1396,9 @@ function App() {
 
                 <div className="form-group-full">
                   <label>URL Dokumen Bukti Penyelesaian / Kepatuhan Mutu*</label>
-                  <input 
-                    type="url" 
-                    placeholder="https://drive.google.com/file/d/bukti-penyelesaian..." 
+                  <input
+                    type="url"
+                    placeholder="https://drive.google.com/file/d/bukti-penyelesaian..."
                     value={complianceEvidence}
                     onChange={e => setComplianceEvidence(e.target.value)}
                     required
@@ -1432,9 +1432,9 @@ function App() {
               <div className="modal-body">
                 <div className="form-group-full">
                   <label>Nama Versi Snapshot*</label>
-                  <input 
-                    type="text" 
-                    placeholder="Contoh: Versi Standard IKU Kampus 2026" 
+                  <input
+                    type="text"
+                    placeholder="Contoh: Versi Standard IKU Kampus 2026"
                     value={newVersionName}
                     onChange={e => setNewVersionName(e.target.value)}
                     required
