@@ -32,7 +32,7 @@ import {
 } from 'lucide-react';
 import './App.css';
 
-const API_BASE = import.meta.env.VITE_API_BASE;
+const API_BASE = 'https://spmi-iku-backend.vercel.app/api';
 
 function App() {
   // Navigation & Filtering
