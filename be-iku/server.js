@@ -7,12 +7,36 @@ const { v4: uuidv4 } = require('uuid');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-const DATA_FILE = path.join(__dirname, 'data.json');
-const UPLOADS_DIR = path.join(__dirname, 'uploads');
 
-// Create uploads directory if not exists
-if (!fs.existsSync(UPLOADS_DIR)) {
-  fs.mkdirSync(UPLOADS_DIR, { recursive: true });
+let DATA_FILE = path.join(__dirname, 'data.json');
+let UPLOADS_DIR = path.join(__dirname, 'uploads');
+
+// Vercel Serverless environment compatibility (Writeable /tmp folder)
+if (process.env.VERCEL) {
+  DATA_FILE = path.join('/tmp', 'data.json');
+  UPLOADS_DIR = path.join('/tmp', 'uploads');
+  
+  // Seed initial data.json to /tmp if it does not exist there yet
+  try {
+    if (!fs.existsSync(DATA_FILE)) {
+      const initialDataPath = path.join(__dirname, 'data.json');
+      if (fs.existsSync(initialDataPath)) {
+        fs.copyFileSync(initialDataPath, DATA_FILE);
+        console.log('Seeded initial data.json to /tmp/data.json');
+      }
+    }
+  } catch (err) {
+    console.error('Error copying initial data to /tmp:', err);
+  }
+}
+
+// Create uploads directory if not exists (inside try/catch to avoid EROFS crash)
+try {
+  if (!fs.existsSync(UPLOADS_DIR)) {
+    fs.mkdirSync(UPLOADS_DIR, { recursive: true });
+  }
+} catch (err) {
+  console.warn('Could not create uploads directory:', err.message);
 }
 
 // Middleware
