@@ -304,24 +304,10 @@ app.post('/api/audit-forms/detect-discrepancy', (req, res) => {
       const existingTicket = data.tickets.find(t => t.standardId === std.id && (t.status === 'Active' || t.status === 'Breached'));
       if (!existingTicket) {
         // Intelligent Routing Engine Mapping
-        let assignedToUnit = "BPM (Badan Penjamin Mutu) Pusat";
-        if (std.id === 'IKU-001') {
-          assignedToUnit = "Lembaga Konsultan Pengembangan Karier Dosen (Unit 4)";
-        } else if (std.id === 'IKU-002') {
-          assignedToUnit = "Lembaga Pengembangan Pembelajaran & Penjaminan Mutu";
-        } else if (std.id === 'IKU-003' || std.id === 'IKU-004') {
-          assignedToUnit = "Lembaga Penelitian & Pengabdian Masyarakat";
-        } else if (std.id === 'IKU-005') {
-          assignedToUnit = "Badan Penjaminan Mutu";
-        } else if (std.id === 'IKU-006') {
-          assignedToUnit = "Kantor Akuntan Publik (Unit 6)";
-        } else if (std.id === 'IKU-007') {
-          assignedToUnit = "Pusat Karier & Alumni";
-        } else if (std.id === 'IKU-008') {
-          assignedToUnit = "Biro Administrasi Kepegawaian";
-        } else if (std.id === 'IKU-009') {
-          assignedToUnit = "Biro Sarana dan Prasarana";
-        } else if (std.nama.toLowerCase().includes('legal') || std.nama.toLowerCase().includes('hukum') || std.nama.toLowerCase().includes('sk')) {
+        let assignedToUnit = std.unitPenanggungJawab || "BPM (Badan Penjamin Mutu) Pusat";
+        
+        // Contextual fallbacks
+        if (std.nama.toLowerCase().includes('legal') || std.nama.toLowerCase().includes('hukum') || std.nama.toLowerCase().includes('sk')) {
           assignedToUnit = "Lembaga Konsultan Bantuan Hukum Perguruan Tinggi (Unit 3)";
         }
 
