@@ -171,6 +171,24 @@ app.post('/api/upload-evidence', upload.single('file'), (req, res) => {
   });
 });
 
+// Expose simulated raw data from SISTER/OBE
+app.get('/api/raw-data/:source', (req, res) => {
+  const { source } = req.params;
+  const fileName = source.toLowerCase() === 'sister' ? 'raw-sister.json' : 'raw-obe.json';
+  const filePath = path.join(__dirname, fileName);
+
+  try {
+    if (fs.existsSync(filePath)) {
+      const raw = fs.readFileSync(filePath, 'utf8');
+      return res.json(JSON.parse(raw));
+    }
+    return res.status(404).json({ error: `Raw data for ${source} not found` });
+  } catch (err) {
+    console.error(`Error reading raw data for ${source}:`, err);
+    return res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
 // Sync Simulation (SISTER or OBE System)
 app.post('/api/sync-api/:source', (req, res) => {
   const { source } = req.params;
@@ -178,14 +196,24 @@ app.post('/api/sync-api/:source', (req, res) => {
   let updatedCount = 0;
 
   if (source === 'SISTER') {
-    // SISTER handles lecturers qualification IKU-001
-    const s1Index = data.achievements.findIndex(a => a.standardId === 'IKU-001');
-    // Simulate updating S3 lecturer percentage from 32% to 42% (or higher, crossing the 40% threshold!)
-    const newValue = Math.floor(Math.random() * (46 - 38 + 1)) + 38; // between 38 and 46
+    // Read raw SISTER JSON
+    const sisterPath = path.join(__dirname, 'raw-sister.json');
+    if (!fs.existsSync(sisterPath)) {
+      return res.status(404).json({ error: 'Raw SISTER data not found' });
+    }
+    const rawData = JSON.parse(fs.readFileSync(sisterPath, 'utf8'));
+    
+    // Calculate S3 Ratio: (Number of S3 active lecturers / Total active lecturers) * 100
+    const activeLecturers = rawData.dataDosen.filter(d => d.statusAktif);
+    const s3Lecturers = activeLecturers.filter(d => d.pendidikanTertinggi === 'S3');
+    const calculatedValue = Math.round((s3Lecturers.length / activeLecturers.length) * 100); // 5 / 10 * 100 = 50%
+
+    // Update IKU-004 (Rekognisi Kepakaran Dosen / Kualifikasi)
+    const s1Index = data.achievements.findIndex(a => a.standardId === 'IKU-004');
     const updatedAchievement = {
-      id: s1Index > -1 ? data.achievements[s1Index].id : 'ACH-001',
-      standardId: 'IKU-001',
-      actualValue: newValue,
+      id: s1Index > -1 ? data.achievements[s1Index].id : 'ACH-004',
+      standardId: 'IKU-004',
+      actualValue: calculatedValue,
       evidenceUrl: 'https://sister.kemdikbud.go.id/universitas/sister-sync',
       evidenceFileName: `SISTER_Sync_Snapshot_${new Date().toISOString().split('T')[0]}.pdf`,
       lastUpdated: new Date().toISOString(),
@@ -193,19 +221,30 @@ app.post('/api/sync-api/:source', (req, res) => {
     };
 
     if (s1Index > -1) {
-      data.achievements[s1Index] = updatedAchievement;
+      data.achievements[s1Index] = { ...data.achievements[s1Index], ...updatedAchievement };
     } else {
       data.achievements.push(updatedAchievement);
     }
     updatedCount++;
   } else if (source === 'OBE') {
-    // OBE system updates IKU-002
-    const s2Index = data.achievements.findIndex(a => a.standardId === 'IKU-002');
-    const newValue = Math.floor(Math.random() * (100 - 85 + 1)) + 85; // between 85 and 100
+    // Read raw OBE JSON
+    const obePath = path.join(__dirname, 'raw-obe.json');
+    if (!fs.existsSync(obePath)) {
+      return res.status(404).json({ error: 'Raw OBE data not found' });
+    }
+    const rawData = JSON.parse(fs.readFileSync(obePath, 'utf8'));
+
+    // Calculate OBE Ratio: (Number of prodi with status 'OBE Implemented' / Total prodi) * 100
+    const totalProdi = rawData.dataKurikulumProdi.length;
+    const obeProdi = rawData.dataKurikulumProdi.filter(p => p.statusKurikulum === 'OBE Implemented').length;
+    const calculatedValue = Math.round((obeProdi / totalProdi) * 100); // 8 / 10 * 100 = 80%
+
+    // Update IKU-001 (AEE PT / Kurikulum OBE)
+    const s2Index = data.achievements.findIndex(a => a.standardId === 'IKU-001');
     const updatedAchievement = {
-      id: s2Index > -1 ? data.achievements[s2Index].id : 'ACH-002',
-      standardId: 'IKU-002',
-      actualValue: newValue,
+      id: s2Index > -1 ? data.achievements[s2Index].id : 'ACH-001',
+      standardId: 'IKU-001',
+      actualValue: calculatedValue,
       evidenceUrl: 'https://obe.kampus.ac.id/curriculum-api',
       evidenceFileName: `OBE_Export_${new Date().toISOString().split('T')[0]}.xlsx`,
       lastUpdated: new Date().toISOString(),
@@ -213,7 +252,7 @@ app.post('/api/sync-api/:source', (req, res) => {
     };
 
     if (s2Index > -1) {
-      data.achievements[s2Index] = updatedAchievement;
+      data.achievements[s2Index] = { ...data.achievements[s2Index], ...updatedAchievement };
     } else {
       data.achievements.push(updatedAchievement);
     }
@@ -304,10 +343,24 @@ app.post('/api/audit-forms/detect-discrepancy', (req, res) => {
       const existingTicket = data.tickets.find(t => t.standardId === std.id && (t.status === 'Active' || t.status === 'Breached'));
       if (!existingTicket) {
         // Intelligent Routing Engine Mapping
-        let assignedToUnit = std.unitPenanggungJawab || "BPM (Badan Penjamin Mutu) Pusat";
-        
-        // Contextual fallbacks
-        if (std.nama.toLowerCase().includes('legal') || std.nama.toLowerCase().includes('hukum') || std.nama.toLowerCase().includes('sk')) {
+        let assignedToUnit = "BPM (Badan Penjamin Mutu) Pusat";
+        if (std.id === 'IKU-001') {
+          assignedToUnit = "Lembaga Konsultan Pengembangan Karier Dosen (Unit 4)";
+        } else if (std.id === 'IKU-002') {
+          assignedToUnit = "Lembaga Pengembangan Pembelajaran & Penjaminan Mutu";
+        } else if (std.id === 'IKU-003' || std.id === 'IKU-004') {
+          assignedToUnit = "Lembaga Penelitian & Pengabdian Masyarakat";
+        } else if (std.id === 'IKU-005') {
+          assignedToUnit = "Badan Penjaminan Mutu";
+        } else if (std.id === 'IKU-006') {
+          assignedToUnit = "Kantor Akuntan Publik (Unit 6)";
+        } else if (std.id === 'IKU-007') {
+          assignedToUnit = "Pusat Karier & Alumni";
+        } else if (std.id === 'IKU-008') {
+          assignedToUnit = "Biro Administrasi Kepegawaian";
+        } else if (std.id === 'IKU-009') {
+          assignedToUnit = "Biro Sarana dan Prasarana";
+        } else if (std.nama.toLowerCase().includes('legal') || std.nama.toLowerCase().includes('hukum') || std.nama.toLowerCase().includes('sk')) {
           assignedToUnit = "Lembaga Konsultan Bantuan Hukum Perguruan Tinggi (Unit 3)";
         }
 

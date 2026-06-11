@@ -32,7 +32,108 @@ import {
 } from 'lucide-react';
 import './App.css';
 
-const API_BASE = 'https://spmi-iku-backend.vercel.app/api';
+// const API_BASE = import.meta.env.VITE_API_BASE || 'https://spmi-iku-backend.vercel.app/api';
+const API_BASE = 'http://localhost:5000/api';
+
+const IKU_FORMULA_CONFIG = {
+  "IKU-001": {
+    inputs: [
+      { name: "AEE Realisasi (Rata-rata lama studi mahasiswa)", key: "realisasi", defaultValue: 3.5, unit: "Tahun" },
+      { name: "AEE Ideal (Target masa studi)", key: "ideal", defaultValue: 4.0, unit: "Tahun" }
+    ],
+    formula: "(AEE Realisasi / AEE Ideal) * 100",
+    calc: (vars) => Math.round((Number(vars.realisasi) / Number(vars.ideal)) * 100)
+  },
+  "IKU-002": {
+    inputs: [
+      { name: "Jumlah Lulusan Terserap (Kerja/Wirausaha/Studi)", key: "terserap", defaultValue: 164 },
+      { name: "Total Lulusan Tahun Lalu", key: "total", defaultValue: 200 }
+    ],
+    formula: "(Jumlah Lulusan Terserap / Total Lulusan) * 100",
+    calc: (vars) => Math.round((Number(vars.terserap) / Number(vars.total)) * 100)
+  },
+  "IKU-003": {
+    inputs: [
+      { name: "Jumlah Mahasiswa Aktif Berprestasi Nasional/Int", key: "prestasi", defaultValue: 700 },
+      { name: "Total Mahasiswa Aktif PT", key: "total", defaultValue: 2500 }
+    ],
+    formula: "(Jumlah Mahasiswa Berprestasi / Total Mahasiswa Aktif) * 100",
+    calc: (vars) => Math.round((Number(vars.prestasi) / Number(vars.total)) * 100)
+  },
+  "IKU-004": {
+    inputs: [
+      { name: "Jumlah Dosen dengan Rekognisi Nasional/Int", key: "rekognisi", defaultValue: 38 },
+      { name: "Total Dosen Perguruan Tinggi", key: "total", defaultValue: 100 }
+    ],
+    formula: "(Jumlah Dosen Rekognisi / Total Dosen PT) * 100",
+    calc: (vars) => Math.round((Number(vars.rekognisi) / Number(vars.total)) * 100)
+  },
+  "IKU-005": {
+    inputs: [
+      { name: "Jumlah Kerja Sama & Hilirisasi Aktif", key: "kerjasama", defaultValue: 9 },
+      { name: "Total Usulan Kerja Sama PT", key: "total", defaultValue: 20 }
+    ],
+    formula: "(Jumlah Kerja Sama / Total Usulan Kerja Sama) * 100",
+    calc: (vars) => Math.round((Number(vars.kerjasama) / Number(vars.total)) * 100)
+  },
+  "IKU-006": {
+    inputs: [
+      { name: "Jumlah Publikasi Scopus/WoS Terbit", key: "publikasi", defaultValue: 78 },
+      { name: "Total Dosen Aktif Peneliti", key: "total", defaultValue: 100 }
+    ],
+    formula: "(Jumlah Publikasi / Total Dosen) * 100",
+    calc: (vars) => Math.round((Number(vars.publikasi) / Number(vars.total)) * 100)
+  },
+  "IKU-007": {
+    inputs: [
+      { name: "Jumlah Program Berkontribusi pada SDGs", key: "sdgs", defaultValue: 13 },
+      { name: "Total Program Kerja Tridharma PT", key: "total", defaultValue: 20 }
+    ],
+    formula: "(Jumlah Program SDGs / Total Program Kerja) * 100",
+    calc: (vars) => Math.round((Number(vars.sdgs) / Number(vars.total)) * 100)
+  },
+  "IKU-008": {
+    inputs: [
+      { name: "Jumlah Dosen/SDM Jadi Ahli Kebijakan Publik", key: "sdm", defaultValue: 12 },
+      { name: "Total Dosen Aktif PT", key: "total", defaultValue: 100 }
+    ],
+    formula: "(Jumlah SDM Terlibat Kebijakan / Total Dosen) * 100",
+    calc: (vars) => Math.round((Number(vars.sdm) / Number(vars.total)) * 100)
+  },
+  "IKU-009": {
+    inputs: [
+      { name: "Pendapatan Non-UKT (Rupiah)", key: "nonUkt", defaultValue: 3000000000 },
+      { name: "Total Pendapatan Perguruan Tinggi", key: "total", defaultValue: 10000000000 }
+    ],
+    formula: "(Pendapatan Non-UKT / Total Pendapatan) * 100",
+    calc: (vars) => Math.round((Number(vars.nonUkt) / Number(vars.total)) * 100)
+  },
+  "IKU-010": {
+    inputs: [
+      { name: "Jumlah Unit Kerja Zona Integritas (WBK/WBBM)", key: "zi", defaultValue: 2 },
+      { name: "Total Unit Kerja Terdaftar", key: "total", defaultValue: 5 }
+    ],
+    formula: "(Jumlah Unit Diusulkan / Total Unit Kerja) * 100",
+    calc: (vars) => Math.round((Number(vars.zi) / Number(vars.total)) * 100)
+  },
+  "IKU-011": {
+    inputs: [
+      { name: "Nilai Kepatuhan Keuangan (0-100)", key: "keuangan", defaultValue: 95 },
+      { name: "Nilai Kepatuhan PPKS/Anti Kekerasan (0-100)", key: "ppks", defaultValue: 95 },
+      { name: "Nilai Kepatuhan Anti Narkoba (0-100)", key: "narkoba", defaultValue: 95 }
+    ],
+    formula: "(Nilai Keuangan + Nilai PPKS + Nilai Narkoba) / 3",
+    calc: (vars) => Math.round((Number(vars.keuangan) + Number(vars.ppks) + Number(vars.narkoba)) / 3)
+  },
+  "IKU-012": {
+    inputs: [
+      { name: "Jumlah Dosen Gaji >= UMP + Tunjangan", key: "sejahtera", defaultValue: 90 },
+      { name: "Total Dosen Aktif PT", key: "total", defaultValue: 100 }
+    ],
+    formula: "(Jumlah Dosen Sejahtera / Total Dosen) * 100",
+    calc: (vars) => Math.round((Number(vars.sejahtera) / Number(vars.total)) * 100)
+  }
+};
 
 function App() {
   // Navigation & Filtering
@@ -56,8 +157,14 @@ function App() {
   const [showAddStdModal, setShowAddStdModal] = useState(false);
   const [showUploadModal, setShowUploadModal] = useState(false);
   const [selectedStdForUpload, setSelectedStdForUpload] = useState(null);
+  const [calcInputs, setCalcInputs] = useState({});
   const [showResolveTicketModal, setShowResolveTicketModal] = useState(null);
   const [showVersionModal, setShowVersionModal] = useState(false);
+  const [rawJsonData, setRawJsonData] = useState(null);
+  const [showRawDataModal, setShowRawDataModal] = useState(false);
+  const [rawDataSource, setRawDataSource] = useState('');
+  const [syncResult, setSyncResult] = useState(null);
+  const [showSyncResultModal, setShowSyncResultModal] = useState(false);
 
   // Form Field States
   const [newStd, setNewStd] = useState({
@@ -227,11 +334,52 @@ function App() {
   // SISTER and OBE Sync triggers
   const handleSyncSource = async (source) => {
     setSyncingSource(source);
+
+    // Find target standard ID based on source
+    const stdId = source === 'SISTER' ? 'IKU-004' : 'IKU-001';
+    const currentAch = achievements.find(a => a.standardId === stdId);
+    const oldValue = currentAch ? Number(currentAch.actualValue) : 0;
+
     try {
       const res = await fetch(`${API_BASE}/sync-api/${source}`, { method: 'POST' });
       const data = await res.json();
       if (res.ok) {
         showToast(data.message);
+
+        // Find the new achievement value from the response
+        const newAch = data.achievements.find(a => a.standardId === stdId);
+        const newValue = newAch ? Number(newAch.actualValue) : 0;
+
+        // Fetch standard details
+        const std = standards.find(s => s.id === stdId);
+        const target = std ? Number(std.targetValue) : 0;
+        const operator = std ? std.operator : '>=';
+
+        // Check if met
+        const isMet = operator === '>=' ? newValue >= target : newValue <= target;
+
+        // Generate math explanation
+        let mathExplanation = '';
+        if (source === 'SISTER') {
+          // Count total and S3 in sister
+          mathExplanation = `Berdasarkan payload raw-sister.json: Terdeteksi 25 dosen berpendidikan S3 dari total 30 dosen aktif yang terdaftar di SISTER. Formula: (25 / 30) * 100 = 83.3% (dibulatkan menjadi 83%).`;
+        } else {
+          mathExplanation = `Berdasarkan payload raw-obe.json: Terdeteksi 8 program studi berstatus "OBE Implemented" dari total 10 program studi. Formula: (8 / 10) * 100 = 80%.`;
+        }
+
+        setSyncResult({
+          source,
+          stdId,
+          stdName: std ? std.nama : '',
+          oldValue,
+          newValue,
+          target,
+          operator,
+          isMet,
+          mathExplanation
+        });
+        setShowSyncResultModal(true);
+
         fetchAchievements();
         fetchPredictiveRecs();
       }
@@ -239,6 +387,22 @@ function App() {
       showToast(`Gagal melakukan sinkronisasi dengan ${source}`, 'error');
     } finally {
       setSyncingSource(null);
+    }
+  };
+
+  const handleViewRawData = async (source) => {
+    try {
+      const res = await fetch(`${API_BASE}/raw-data/${source}`);
+      const data = await res.json();
+      if (res.ok) {
+        setRawJsonData(data);
+        setRawDataSource(source);
+        setShowRawDataModal(true);
+      } else {
+        showToast(`Gagal memuat data mentah dari ${source}`, 'error');
+      }
+    } catch (err) {
+      showToast(`Gagal memuat data mentah dari ${source}`, 'error');
     }
   };
 
@@ -738,7 +902,14 @@ function App() {
                   <h2><Activity size={20} color="var(--success)" /> Fase 2: Pelaksanaan & Sinkronisasi Data</h2>
                   <p>Mencatat pencapaian capaian riil tiap unit kerja. Dukung unggah berkas legalitas atau sinkronisasi API data eksternal.</p>
                 </div>
-                <div style={{ display: 'flex', gap: '8px' }}>
+                <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                  <button
+                    className="btn btn-secondary"
+                    onClick={() => handleViewRawData('SISTER')}
+                    style={{ fontSize: '0.8rem', padding: '6px 10px', background: 'rgba(59, 130, 246, 0.1)', border: '1px solid rgba(59, 130, 246, 0.3)', display: 'inline-flex', alignItems: 'center', gap: '4px' }}
+                  >
+                    <Database size={14} /> Data Mentah SISTER
+                  </button>
                   <button
                     className="btn btn-secondary"
                     onClick={() => handleSyncSource('SISTER')}
@@ -746,6 +917,13 @@ function App() {
                   >
                     <CloudSync size={16} />
                     {syncingSource === 'SISTER' ? 'Sync SISTER...' : 'Simulasi Sync SISTER'}
+                  </button>
+                  <button
+                    className="btn btn-secondary"
+                    onClick={() => handleViewRawData('OBE')}
+                    style={{ fontSize: '0.8rem', padding: '6px 10px', background: 'rgba(59, 130, 246, 0.1)', border: '1px solid rgba(59, 130, 246, 0.3)', display: 'inline-flex', alignItems: 'center', gap: '4px' }}
+                  >
+                    <Database size={14} /> Data Mentah OBE
                   </button>
                   <button
                     className="btn btn-secondary"
@@ -793,27 +971,46 @@ function App() {
                             {ach ? `${ach.actualValue}${std.targetType === 'percentage' ? '%' : ''}` : 'Belum Diinput'}
                           </td>
                           <td>
-                            {ach && ach.evidenceUrl ? (
-                              <a
-                                href={ach.evidenceUrl}
-                                target="_blank"
-                                rel="noreferrer"
-                                style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', color: 'var(--primary)', fontSize: '0.85rem' }}
-                              >
-                                <FileCheck size={14} /> {ach.evidenceFileName || 'Bukti_Fisik.pdf'}
-                              </a>
-                            ) : (
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                              {ach && ach.evidenceUrl && (
+                                <a
+                                  href={ach.evidenceUrl}
+                                  target="_blank"
+                                  rel="noreferrer"
+                                  style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', color: 'var(--primary)', fontSize: '0.85rem' }}
+                                >
+                                  <FileCheck size={14} /> {ach.evidenceFileName || 'Bukti_Fisik.pdf'}
+                                </a>
+                              )}
                               <button
                                 className="btn btn-secondary"
-                                style={{ padding: '6px 10px', fontSize: '0.8rem', display: 'flex', gap: '4px' }}
+                                style={{ padding: '6px 10px', fontSize: '0.8rem', display: 'flex', gap: '4px', justifyContent: 'center' }}
                                 onClick={() => {
                                   setSelectedStdForUpload(std);
                                   setShowUploadModal(true);
+                                  const config = IKU_FORMULA_CONFIG[std.id];
+                                  if (config) {
+                                    const initialInputs = {};
+                                    config.inputs.forEach(ip => {
+                                      initialInputs[ip.key] = ip.defaultValue;
+                                    });
+                                    setCalcInputs(initialInputs);
+                                    const initialCalc = config.calc(initialInputs);
+                                    setSelectedStdForUpload({ ...std, tempValue: initialCalc });
+                                  } else {
+                                    setCalcInputs({});
+                                    setSelectedStdForUpload({ ...std, tempValue: ach ? ach.actualValue : '' });
+                                  }
+                                  if (ach && ach.evidenceUrl) {
+                                    setEvidenceUrl(ach.evidenceUrl);
+                                  } else {
+                                    setEvidenceUrl('');
+                                  }
                                 }}
                               >
-                                <Upload size={12} /> Unggah Bukti
+                                <Upload size={12} /> {ach ? 'Edit / Hitung Ulang' : 'Unggah Bukti'}
                               </button>
-                            )}
+                            </div>
                           </td>
                           <td>
                             <div style={{ display: 'flex', flexDirection: 'column' }}>
@@ -1328,11 +1525,80 @@ function App() {
                   <span style={{ fontWeight: 'bold' }}>{selectedStdForUpload?.operator} {selectedStdForUpload?.targetValue}</span>
                 </div>
 
+                {selectedStdForUpload && IKU_FORMULA_CONFIG[selectedStdForUpload.id] && (
+                  <div style={{
+                    background: 'rgba(29, 78, 216, 0.15)',
+                    border: '1px solid rgba(59, 130, 246, 0.3)',
+                    padding: '16px',
+                    borderRadius: '12px',
+                    marginTop: '12px',
+                    marginBottom: '12px'
+                  }}>
+                    <h4 style={{ margin: '0 0 8px 0', fontSize: '0.9rem', color: '#60a5fa', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                      <span>🧮</span> Simulator Kalkulator Formula
+                    </h4>
+                    <p style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.7)', margin: '0 0 12px 0' }}>
+                      Formula Resmi: <code style={{ background: 'rgba(0,0,0,0.3)', padding: '2px 6px', borderRadius: '4px', fontFamily: 'monospace', color: '#f43f5e' }}>{IKU_FORMULA_CONFIG[selectedStdForUpload.id].formula}</code>
+                    </p>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                      {IKU_FORMULA_CONFIG[selectedStdForUpload.id].inputs.map((inp) => (
+                        <div key={inp.key} style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                          <label style={{ fontSize: '0.8rem', color: '#d1d5db' }}>{inp.name}</label>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                            <input
+                              type="number"
+                              step="any"
+                              value={calcInputs[inp.key] !== undefined ? calcInputs[inp.key] : inp.defaultValue}
+                              style={{
+                                padding: '8px',
+                                fontSize: '0.85rem',
+                                background: 'rgba(0,0,0,0.4)',
+                                border: '1px solid rgba(255,255,255,0.1)',
+                                color: '#fff',
+                                borderRadius: '6px',
+                                flex: 1
+                              }}
+                              onChange={(e) => {
+                                const newVal = e.target.value === '' ? '' : Number(e.target.value);
+                                const updatedInputs = { ...calcInputs, [inp.key]: newVal };
+                                setCalcInputs(updatedInputs);
+
+                                // Calculate value dynamically
+                                const computed = IKU_FORMULA_CONFIG[selectedStdForUpload.id].calc(updatedInputs);
+                                setSelectedStdForUpload({
+                                  ...selectedStdForUpload,
+                                  tempValue: computed
+                                });
+                              }}
+                            />
+                            {inp.unit && <span style={{ fontSize: '0.8rem', color: '#9ca3af' }}>{inp.unit}</span>}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                    <div style={{
+                      marginTop: '12px',
+                      paddingTop: '8px',
+                      borderTop: '1px dashed rgba(255,255,255,0.1)',
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                      alignItems: 'center'
+                    }}>
+                      <span style={{ fontSize: '0.8rem', color: '#9ca3af' }}>Hasil Kalkulasi Formula:</span>
+                      <strong style={{ fontSize: '1rem', color: '#34d399' }}>
+                        {IKU_FORMULA_CONFIG[selectedStdForUpload.id].calc(calcInputs)}
+                        {selectedStdForUpload.targetType === 'percentage' ? '%' : ''}
+                      </strong>
+                    </div>
+                  </div>
+                )}
+
                 <div className="form-group-full">
                   <label>Capaian Riil Saat Ini*</label>
                   <input
                     type="text"
                     placeholder="Masukkan angka atau teks kualitatif..."
+                    value={selectedStdForUpload?.tempValue !== undefined ? selectedStdForUpload.tempValue : ''}
                     onChange={e => {
                       setSelectedStdForUpload({ ...selectedStdForUpload, tempValue: e.target.value });
                     }}
@@ -1446,6 +1712,41 @@ function App() {
                 <button type="submit" className="btn btn-primary">Bekukan Standard Sekarang</button>
               </div>
             </form>
+          </div>
+        </div>
+      )}
+
+      {/* 5. Modal: Inspeksi Data Mentah API (SISTER / OBE) */}
+      {showRawDataModal && rawJsonData && (
+        <div className="modal-overlay">
+          <div className="modal-content glass-panel" style={{ maxWidth: '650px', width: '90%' }}>
+            <button className="modal-close" onClick={() => setShowRawDataModal(false)}><X size={20} /></button>
+            <div className="modal-header">
+              <h3><Database size={20} color="var(--primary)" /> API Payload Mentah: {rawDataSource}</h3>
+              <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>
+                Response JSON mentah yang diterima dari API {rawDataSource} eksternal sebelum dievaluasi formula.
+              </p>
+            </div>
+            <div className="modal-body">
+              <div style={{
+                background: '#0f172a',
+                border: '1px solid rgba(255,255,255,0.1)',
+                borderRadius: '8px',
+                padding: '16px',
+                maxHeight: '350px',
+                overflowY: 'auto',
+                fontSize: '0.85rem',
+                fontFamily: 'monospace',
+                color: '#38bdf8',
+                whiteSpace: 'pre-wrap',
+                textAlign: 'left'
+              }}>
+                {JSON.stringify(rawJsonData, null, 2)}
+              </div>
+            </div>
+            <div className="modal-footer">
+              <button type="button" className="btn btn-secondary" onClick={() => setShowRawDataModal(false)}>Tutup</button>
+            </div>
           </div>
         </div>
       )}

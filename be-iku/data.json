@@ -137,11 +137,11 @@
     {
       "id": "ACH-001",
       "standardId": "IKU-001",
-      "actualValue": 88,
-      "evidenceUrl": "https://sister.kemdikbud.go.id/universitas/sister-sync",
-      "evidenceFileName": "AEE_Realisasi_Siklus_2026.pdf",
-      "lastUpdated": "2026-06-03T16:09:46.951Z",
-      "syncSource": "SISTER API"
+      "actualValue": 80,
+      "evidenceUrl": "https://obe.kampus.ac.id/curriculum-api",
+      "evidenceFileName": "OBE_Export_2026-06-03.xlsx",
+      "lastUpdated": "2026-06-03T17:23:41.749Z",
+      "syncSource": "OBE API"
     },
     {
       "id": "ACH-002",
@@ -164,11 +164,11 @@
     {
       "id": "ACH-004",
       "standardId": "IKU-004",
-      "actualValue": 38,
-      "evidenceUrl": "https://drive.google.com/drive/folders/dosen-rekognisi",
-      "evidenceFileName": "SK_Dekan_Rekognisi_Dosen_2026.pdf",
-      "lastUpdated": "2026-06-02T11:00:00Z",
-      "syncSource": "Manual Upload"
+      "actualValue": 60,
+      "evidenceUrl": "https://sister.kemdikbud.go.id/universitas/sister-sync",
+      "evidenceFileName": "SISTER_Sync_Snapshot_2026-06-03.pdf",
+      "lastUpdated": "2026-06-03T17:28:20.520Z",
+      "syncSource": "SISTER API"
     },
     {
       "id": "ACH-005",

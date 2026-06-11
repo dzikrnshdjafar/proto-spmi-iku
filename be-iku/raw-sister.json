@@ -1,0 +1,47 @@
+{
+  "source": "Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi (SISTER API v3.0)",
+  "syncTime": "2026-06-03T16:00:00Z",
+  "universitas": "Universitas Unggul Nusantara",
+  "metadata": {
+    "totalDosenAktif": 100,
+    "dosenS3": 38,
+    "dosenS2": 62
+  },
+  "dataDosen": [
+    {
+      "nidn": "0401027801",
+      "nama": "Dr. Ir. Hendra Wijaya, M.T.",
+      "rumpunKeahlian": "Teknik Informatika",
+      "pendidikanTertinggi": "S3",
+      "statusAktif": true
+    },
+    {
+      "nidn": "0422118502",
+      "nama": "Rina Kartika, M.Kom.",
+      "rumpunKeahlian": "Sistem Informasi",
+      "pendidikanTertinggi": "S2",
+      "statusAktif": true
+    },
+    {
+      "nidn": "0411127710",
+      "nama": "Dr. Yulia Fitriani, M.Sc.",
+      "rumpunKeahlian": "Kecerdasan Buatan",
+      "pendidikanTertinggi": "S3",
+      "statusAktif": true
+    },
+    {
+      "nidn": "0411127710",
+      "nama": "Dr. Yulia Fitriani, M.Sc.",
+      "rumpunKeahlian": "Kecerdasan Buatan",
+      "pendidikanTertinggi": "S3",
+      "statusAktif": true
+    },
+    {
+      "nidn": "0411127710",
+      "nama": "Dr. Yulia Fitriani, M.Sc.",
+      "rumpunKeahlian": "Kecerdasan Buatan",
+      "pendidikanTertinggi": "S1",
+      "statusAktif": true
+    }
+  ]
+}
