@@ -28,12 +28,13 @@ import {
   X,
   FileCheck,
   ChevronDown,
-  ChevronRight
+  ChevronRight,
+  Menu
 } from 'lucide-react';
 import './App.css';
 
-// const API_BASE = import.meta.env.VITE_API_BASE || 'https://spmi-iku-backend.vercel.app/api';
-const API_BASE = 'http://localhost:5000/api';
+const API_BASE = import.meta.env.VITE_API_BASE || 'https://spmi-iku-backend.vercel.app/api';
+// const API_BASE = 'http://localhost:5000/api';
 
 const IKU_FORMULA_CONFIG = {
   "IKU-001": {
@@ -140,6 +141,7 @@ function App() {
   const [activeStep, setActiveStep] = useState(0); // 0: Penetapan, 1: Pelaksanaan, 2: Evaluasi, 3: Pengendalian, 4: Peningkatan
   const [selectedRumpun, setSelectedRumpun] = useState('All');
   const [selectedTicketFilter, setSelectedTicketFilter] = useState('All');
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   // Sidebar Dropdown Open/Closed States
   const [openAkademik, setOpenAkademik] = useState(true);
@@ -572,6 +574,11 @@ function App() {
 
   return (
     <div className="app-container">
+      {/* Sidebar Backdrop Overlay on Mobile */}
+      {isSidebarOpen && (
+        <div className="sidebar-overlay-backdrop" onClick={() => setIsSidebarOpen(false)}></div>
+      )}
+
       {/* Toast Notification */}
       {toast && (
         <div className={`toast-banner glass-panel toast-${toast.type}`}>
@@ -588,6 +595,9 @@ function App() {
       {/* Header */}
       <header className="app-header glass-panel">
         <div className="logo-container">
+          <button className="sidebar-toggle-btn" onClick={() => setIsSidebarOpen(!isSidebarOpen)} aria-label="Toggle Sidebar">
+            {isSidebarOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
           <ShieldCheck size={36} className="logo-icon" />
           <div className="logo-text">
             <h1>SPMI - IKU INTELLIGENT DEVIATION ROUTER</h1>
@@ -670,7 +680,7 @@ function App() {
       {/* Main Panel layout */}
       <div className="main-grid">
         {/* Left Side Filter Controls */}
-        <aside className="sidebar-panel glass-panel">
+        <aside className={`sidebar-panel glass-panel ${isSidebarOpen ? 'open' : ''}`}>
           <div className="sidebar-title">Kategori Standar IKU</div>
           <ul className="filter-list">
             <li className={`filter-item ${selectedRumpun === 'All' ? 'active' : ''}`} onClick={() => setSelectedRumpun('All')}>
@@ -1313,7 +1323,7 @@ function App() {
                 </button>
               </div>
 
-              <div style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr', gap: '24px' }}>
+              <div className="fase5-grid">
                 {/* 1. Delta Analytics AI Recommendations */}
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
                   <h3 style={{ fontSize: '1.1rem', display: 'flex', alignItems: 'center', gap: '6px' }}>

@@ -564,6 +564,7 @@
   align-items: center;
   justify-content: center;
   padding: 20px;
+  overflow-y: auto;
 }
 
 .modal-content {
@@ -697,3 +698,243 @@
   font-size: 0.75rem;
   color: var(--text-muted);
 }
+
+/* Sidebar toggle and overlay backdrop (general styles) */
+.sidebar-toggle-btn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  margin-right: 12px;
+  transition: all 0.2s;
+  z-index: 10;
+}
+
+.sidebar-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(99, 102, 241, 0.3);
+}
+
+.sidebar-overlay-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(11, 15, 25, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 998;
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Responsive Design / Media Queries */
+
+@media (max-width: 1024px) {
+  .main-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .sidebar-toggle-btn {
+    display: flex !important;
+  }
+
+  .sidebar-panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 280px;
+    z-index: 999;
+    transform: translateX(-100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: #0f172a; /* Solid obsidian background to overlap content */
+    border-right: 1px solid var(--border-color);
+    border-radius: 0;
+    overflow-y: auto;
+    margin: 0;
+    box-shadow: 10px 0 30px rgba(0, 0, 0, 0.5);
+    height: 100vh;
+    padding: 24px 20px;
+  }
+
+  .sidebar-panel.open {
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .app-container {
+    padding: 16px;
+    gap: 16px;
+  }
+
+  .app-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 16px;
+  }
+
+  .logo-text h1 {
+    font-size: 1.2rem;
+  }
+
+  .system-status {
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .ppepp-timeline {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    gap: 8px;
+    padding: 8px;
+    border-radius: var(--radius-lg);
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+
+  .timeline-step {
+    flex: 0 0 140px;
+    padding: 10px 8px;
+  }
+
+  .timeline-step::after {
+    display: none;
+  }
+
+  .step-title {
+    font-size: 0.85rem;
+  }
+
+  .step-subtitle {
+    font-size: 0.7rem;
+    white-space: normal;
+  }
+
+  .dashboard-grid {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    gap: 12px;
+    padding: 4px;
+    border-radius: var(--radius-lg);
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    width: 100%;
+  }
+
+  .metric-card {
+    flex: 0 0 240px;
+    padding: 16px;
+  }
+
+  .metric-info p {
+    font-size: 1.5rem;
+  }
+
+  .panel-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding-bottom: 12px;
+  }
+
+  .panel-header h2 {
+    font-size: 1.15rem;
+  }
+
+  .panel-header p {
+    font-size: 0.8rem;
+  }
+
+  .custom-table th {
+    padding: 10px 12px;
+    font-size: 0.7rem;
+  }
+
+  .custom-table td {
+    padding: 12px;
+    font-size: 0.8rem;
+  }
+
+  .kanban-board {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .kanban-column {
+    min-height: auto;
+    padding: 12px;
+  }
+
+  .fase5-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .modal-overlay {
+    align-items: flex-start;
+    padding: 12px;
+  }
+
+  .modal-content {
+    margin: 20px auto;
+    padding: 16px;
+    width: 100%;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .form-group-full {
+    grid-column: span 1;
+  }
+
+  .uploader-box {
+    padding: 16px 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-container {
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .modal-footer {
+    flex-direction: column-reverse;
+    gap: 8px;
+  }
+
+  .modal-footer .btn {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .version-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
+
