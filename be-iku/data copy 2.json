@@ -137,11 +137,11 @@
     {
       "id": "ACH-001",
       "standardId": "IKU-001",
-      "actualValue": 80,
-      "evidenceUrl": "https://drive.google.com/drive/folders/aee-2026",
-      "evidenceFileName": "Evidence_AEE_Compliance_Required.pdf",
-      "lastUpdated": "2026-06-11T11:40:00Z",
-      "syncSource": "Manual Upload"
+      "actualValue": 85,
+      "evidenceUrl": "http://drive.google.com/drive/folders?hl=id",
+      "evidenceFileName": "Evidence_Compliance_Resolved.pdf",
+      "lastUpdated": "2026-06-14T09:24:22.029Z",
+      "syncSource": "Compliance Resolution Upload"
     },
     {
       "id": "ACH-002",
@@ -155,7 +155,7 @@
     {
       "id": "ACH-003",
       "standardId": "IKU-003",
-      "actualValue": 18,
+      "actualValue": 28,
       "evidenceUrl": "https://drive.google.com/drive/folders/prestasi-mahasiswa",
       "evidenceFileName": "Laporan_Aktivitas_MBKM_Prestasi_2026.pdf",
       "lastUpdated": "2026-05-28T14:15:00Z",
@@ -218,7 +218,7 @@
     {
       "id": "ACH-010",
       "standardId": "IKU-010",
-      "actualValue": 30,
+      "actualValue": 42,
       "evidenceUrl": "https://drive.google.com/drive/folders/zona-integritas",
       "evidenceFileName": "Laporan_Pengusulan_ZI_2026.pdf",
       "lastUpdated": "2026-06-02T11:20:00Z",
@@ -236,11 +236,11 @@
     {
       "id": "ACH-012",
       "standardId": "IKU-012",
-      "actualValue": 90,
-      "evidenceUrl": "https://drive.google.com/drive/folders/kesejahteraan-2026",
-      "evidenceFileName": "Laporan_Kelayakan_Dosen.pdf",
-      "lastUpdated": "2026-06-11T11:40:00Z",
-      "syncSource": "Manual Upload"
+      "actualValue": 100,
+      "evidenceUrl": "http://drive.google.com/drive/folders?hl=id",
+      "evidenceFileName": "Evidence_Compliance_Resolved.pdf",
+      "lastUpdated": "2026-06-14T09:24:14.092Z",
+      "syncSource": "Compliance Resolution Upload"
     }
   ],
   "auditForms": [
@@ -264,7 +264,7 @@
       "id": "AUD-003",
       "standardId": "IKU-003",
       "status": "Checked",
-      "auditorNotes": "Audit Temuan: Persentase Aktivitas & Prestasi Mahasiswa Diluar Prodi tidak memenuhi standar. Target: >= 25, Capaian Riil: 18.",
+      "auditorNotes": "Audit Lolos: Capaian 28 telah memenuhi target >= 25.",
       "auditedAt": "2026-06-11T11:40:40.825Z",
       "auditorName": "Dr. Ir. Hendra Wijaya, M.T."
     },
@@ -320,7 +320,7 @@
       "id": "AUD-010",
       "standardId": "IKU-010",
       "status": "Checked",
-      "auditorNotes": "Audit Temuan: Persentase Unit Kerja Terakreditasi Zona Integritas tidak memenuhi standar. Target: >= 40, Capaian Riil: 30.",
+      "auditorNotes": "Audit Lolos: Capaian 42 telah memenuhi target >= 40.",
       "auditedAt": "2026-06-11T11:40:40.825Z",
       "auditorName": "Dr. Ir. Hendra Wijaya, M.T."
     },
@@ -344,12 +344,12 @@
   "tickets": [
     {
       "id": "TCK-001",
-      "standardId": "IKU-012",
-      "auditId": "AUD-012",
-      "description": "Pemenuhan kesejahteraan dosen berbasis UMP & tunjangan kepakaran tidak mencapai target wajib 100% (Capaian: 90%).",
-      "parameterViolated": "Persentase Kesejahteraan Dosen >= 100%",
-      "recommendation": "Segera lakukan penyesuaian gaji pokok dosen menyesuaikan UMP terbaru dan alokasikan dana tunjangan kepakaran akademik.",
-      "assignedToUnit": "Biro Kepegawaian & Yayasan Perguruan Tinggi",
+      "standardId": "IKU-005",
+      "auditId": "AUD-005",
+      "description": "Kerja sama & Hilirisasi riset dengan start-up/industri tidak mencapai target 50% (Capaian: 45%).",
+      "parameterViolated": "Hilirisasi Kerja sama Industri >= 50%",
+      "recommendation": "Aktifkan program inkubator bisnis kampus dan hubungkan hasil riset dosen langsung ke KADIN/Mitra Industri terdaftar.",
+      "assignedToUnit": "Direktorat Kerjasama & Inkubator Bisnis",
       "slaDays": 30,
       "createdAt": "2026-05-02T12:15:00Z",
       "dueDate": "2026-06-01T12:15:00Z",
@@ -378,6 +378,23 @@
     },
     {
       "id": "TCK-003",
+      "standardId": "IKU-012",
+      "auditId": "AUD-012",
+      "description": "Pemenuhan kesejahteraan dosen berbasis UMP & tunjangan kepakaran tidak mencapai target wajib 100% (Capaian: 90%).",
+      "parameterViolated": "Persentase Kesejahteraan Dosen >= 100%",
+      "recommendation": "Segera lakukan penyesuaian gaji pokok dosen menyesuaikan UMP terbaru dan alokasikan dana tunjangan kepakaran kepangkatan akademik.",
+      "assignedToUnit": "Biro Kepegawaian & Yayasan Perguruan Tinggi",
+      "slaDays": 30,
+      "createdAt": "2026-06-03T15:02:13.123Z",
+      "dueDate": "2026-07-03T15:02:13.123Z",
+      "status": "Resolved",
+      "evidenceOfCompliance": "http://drive.google.com/drive/folders?hl=id",
+      "resolvedAt": "2026-06-14T09:24:14.092Z",
+      "escalated": false,
+      "escalationNotes": null
+    },
+    {
+      "id": "TCK-004",
       "standardId": "IKU-001",
       "auditId": "AUD-001",
       "description": "Discrepancy detected for standard: AEE PT (Efisiensi Edukasi Kelulusan Tepat Waktu). Capaian riil 80 gagal memenuhi target >= 85.",
@@ -387,60 +404,9 @@
       "slaDays": 30,
       "createdAt": "2026-06-11T11:40:33.832Z",
       "dueDate": "2026-07-11T11:40:33.832Z",
-      "status": "Active",
-      "evidenceOfCompliance": null,
-      "resolvedAt": null,
-      "escalated": false,
-      "escalationNotes": null
-    },
-    {
-      "id": "TCK-004",
-      "standardId": "IKU-003",
-      "auditId": "AUD-003",
-      "description": "Persentase Aktivitas & Prestasi Mahasiswa Diluar Prodi di bawah target (Capaian: 18% vs Target: 25%).",
-      "parameterViolated": "Aktivitas & Prestasi Mahasiswa Diluar Prodi >= 25%",
-      "recommendation": "Lakukan pembinaan intensif untuk kompetensi kemahasiswaan tingkat nasional/internasional.",
-      "assignedToUnit": "Biro Kemahasiswaan & Hubungan Alumni",
-      "slaDays": 30,
-      "createdAt": "2026-06-11T11:40:33.832Z",
-      "dueDate": "2026-07-11T11:40:33.832Z",
-      "status": "Active",
-      "evidenceOfCompliance": null,
-      "resolvedAt": null,
-      "escalated": false,
-      "escalationNotes": null
-    },
-    {
-      "id": "TCK-005",
-      "standardId": "IKU-005",
-      "auditId": "AUD-005",
-      "description": "Kerja Sama & Hilirisasi Hasil Riset dengan Start-up/Industri di bawah target (Capaian: 45% vs Target: 50%).",
-      "parameterViolated": "Kerja Sama & Hilirisasi Hasil Riset >= 50%",
-      "recommendation": "Aktifkan inkubator bisnis kampus dan hubungkan hasil riset dosen ke KADIN/Mitra Industri.",
-      "assignedToUnit": "Direktorat Kerjasama & Inkubator Bisnis",
-      "slaDays": 30,
-      "createdAt": "2026-06-11T11:40:33.832Z",
-      "dueDate": "2026-07-11T11:40:33.832Z",
-      "status": "Active",
-      "evidenceOfCompliance": null,
-      "resolvedAt": null,
-      "escalated": false,
-      "escalationNotes": null
-    },
-    {
-      "id": "TCK-006",
-      "standardId": "IKU-010",
-      "auditId": "AUD-010",
-      "description": "Persentase Unit Kerja Terakreditasi Zona Integritas (WBK/WBBM) di bawah target (Capaian: 30% vs Target: 40%).",
-      "parameterViolated": "Unit Terakreditasi Zona Integritas >= 40%",
-      "recommendation": "Sosialisasikan standar akreditasi zona integritas (WBK/WBBM) ke unit-unit kerja yang tersisa.",
-      "assignedToUnit": "Satuan Pengawas Internal (SPI)",
-      "slaDays": 30,
-      "createdAt": "2026-06-11T11:40:33.832Z",
-      "dueDate": "2026-07-11T11:40:33.832Z",
-      "status": "Active",
-      "evidenceOfCompliance": null,
-      "resolvedAt": null,
+      "status": "Resolved",
+      "evidenceOfCompliance": "http://drive.google.com/drive/folders?hl=id",
+      "resolvedAt": "2026-06-14T09:24:22.028Z",
       "escalated": false,
       "escalationNotes": null
     }

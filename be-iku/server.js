@@ -8,26 +8,11 @@ const { v4: uuidv4 } = require('uuid');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-let DATA_FILE = path.join(__dirname, 'data.json');
 let UPLOADS_DIR = path.join(__dirname, 'uploads');
 
 // Vercel Serverless environment compatibility (Writeable /tmp folder)
 if (process.env.VERCEL) {
-  DATA_FILE = path.join('/tmp', 'data.json');
   UPLOADS_DIR = path.join('/tmp', 'uploads');
-  
-  // Seed initial data.json to /tmp if it does not exist there yet
-  try {
-    if (!fs.existsSync(DATA_FILE)) {
-      const initialDataPath = path.join(__dirname, 'data.json');
-      if (fs.existsSync(initialDataPath)) {
-        fs.copyFileSync(initialDataPath, DATA_FILE);
-        console.log('Seeded initial data.json to /tmp/data.json');
-      }
-    }
-  } catch (err) {
-    console.error('Error copying initial data to /tmp:', err);
-  }
 }
 
 // Create uploads directory if not exists (inside try/catch to avoid EROFS crash)
@@ -44,27 +29,66 @@ app.use(cors());
 app.use(express.json());
 app.use('/uploads', express.static(UPLOADS_DIR));
 
-// Helper: Read Data
-function readData() {
-  try {
-    if (!fs.existsSync(DATA_FILE)) {
-      return { standards: [], achievements: [], auditForms: [], tickets: [], historicalCycles: [], versions: [] };
+// Helper: Get data file path based on cycle header
+function getFilePath(cycle) {
+  const fileName = cycle === '2025' ? 'data_2025.json' : 'data.json';
+  const dataDir = process.env.VERCEL ? '/tmp' : __dirname;
+  return path.join(dataDir, fileName);
+}
+
+// Vercel Serverless environment compatibility (Seed initial files to /tmp)
+if (process.env.VERCEL) {
+  ['data.json', 'data_2025.json'].forEach(file => {
+    try {
+      const tmpPath = path.join('/tmp', file);
+      if (!fs.existsSync(tmpPath)) {
+        const srcPath = path.join(__dirname, file);
+        if (fs.existsSync(srcPath)) {
+          fs.copyFileSync(srcPath, tmpPath);
+          console.log(`Seeded initial ${file} to ${tmpPath}`);
+        }
+      }
+    } catch (err) {
+      console.error(`Error copying initial ${file} to /tmp:`, err);
     }
-    const raw = fs.readFileSync(DATA_FILE, 'utf8');
+  });
+}
+
+// Helper: Read Data
+function readData(req) {
+  const cycle = req && req.headers && req.headers['x-cycle'] || '2026';
+  const dataPath = getFilePath(cycle);
+  try {
+    if (!fs.existsSync(dataPath)) {
+      if (cycle === '2025') {
+        const defaultPath = getFilePath('2026');
+        if (fs.existsSync(defaultPath)) {
+          fs.copyFileSync(defaultPath, dataPath);
+          console.log('Duplicated data.json for data_2025.json');
+        } else {
+          return { standards: [], achievements: [], auditForms: [], tickets: [], historicalCycles: [], versions: [] };
+        }
+      } else {
+        return { standards: [], achievements: [], auditForms: [], tickets: [], historicalCycles: [], versions: [] };
+      }
+    }
+    const raw = fs.readFileSync(dataPath, 'utf8');
     return JSON.parse(raw);
   } catch (err) {
-    console.error('Error reading data file:', err);
+    console.error(`Error reading data file ${dataPath}:`, err);
     return { standards: [], achievements: [], auditForms: [], tickets: [], historicalCycles: [], versions: [] };
   }
 }
 
 // Helper: Write Data
-function writeData(data) {
+function writeData(data, req) {
+  const cycle = req && req.headers && req.headers['x-cycle'] || '2026';
+  const dataPath = getFilePath(cycle);
   try {
-    fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2), 'utf8');
+    fs.writeFileSync(dataPath, JSON.stringify(data, null, 2), 'utf8');
     return true;
   } catch (err) {
-    console.error('Error writing data file:', err);
+    console.error(`Error writing data file ${dataPath}:`, err);
     return false;
   }
 }
@@ -89,12 +113,12 @@ app.get('/', (req, res) => {
 
 // 1. Standards (Fase 1: Penetapan)
 app.get('/api/standards', (req, res) => {
-  const data = readData();
+  const data = readData(req);
   res.json(data.standards);
 });
 
 app.post('/api/standards', (req, res) => {
-  const data = readData();
+  const data = readData(req);
   const { id, rumpun, nama, formula, targetType, targetValue, operator, snDikti, unitPenanggungJawab } = req.body;
 
   const newStandard = {
@@ -117,26 +141,26 @@ app.post('/api/standards', (req, res) => {
     data.standards.push(newStandard);
   }
 
-  writeData(data);
+  writeData(data, req);
   res.status(201).json(newStandard);
 });
 
 app.delete('/api/standards/:id', (req, res) => {
-  const data = readData();
+  const data = readData(req);
   const filtered = data.standards.filter(s => s.id !== req.params.id);
   data.standards = filtered;
-  writeData(data);
+  writeData(data, req);
   res.json({ message: 'Standard deleted successfully' });
 });
 
 // 2. Achievements (Fase 2: Pelaksanaan)
 app.get('/api/achievements', (req, res) => {
-  const data = readData();
+  const data = readData(req);
   res.json(data.achievements);
 });
 
 app.post('/api/achievements', (req, res) => {
-  const data = readData();
+  const data = readData(req);
   const { standardId, actualValue, evidenceUrl, evidenceFileName } = req.body;
 
   const existingIdx = data.achievements.findIndex(a => a.standardId === standardId);
@@ -156,7 +180,7 @@ app.post('/api/achievements', (req, res) => {
     data.achievements.push(achievement);
   }
 
-  writeData(data);
+  writeData(data, req);
   res.json(achievement);
 });
 
@@ -192,7 +216,7 @@ app.get('/api/raw-data/:source', (req, res) => {
 // Sync Simulation (SISTER or OBE System)
 app.post('/api/sync-api/:source', (req, res) => {
   const { source } = req.params;
-  const data = readData();
+  const data = readData(req);
   let updatedCount = 0;
 
   if (source === 'SISTER') {
@@ -259,19 +283,19 @@ app.post('/api/sync-api/:source', (req, res) => {
     updatedCount++;
   }
 
-  writeData(data);
+  writeData(data, req);
   res.json({ message: `Fetched success from ${source} Sync. Updated ${updatedCount} indicator(s).`, achievements: data.achievements });
 });
 
 // 3. Audit & Discrepancy (Fase 3: Evaluasi)
 app.get('/api/audit-forms', (req, res) => {
-  const data = readData();
+  const data = readData(req);
   res.json(data.auditForms);
 });
 
 // Detect Discrepancies and Auto-generate tickets
 app.post('/api/audit-forms/detect-discrepancy', (req, res) => {
-  const data = readData();
+  const data = readData(req);
   const discrepancies = [];
   const generatedTickets = [];
 
@@ -407,7 +431,7 @@ app.post('/api/audit-forms/detect-discrepancy', (req, res) => {
     }
   });
 
-  writeData(data);
+  writeData(data, req);
   res.json({
     message: "Discrepancy scan completed.",
     discrepancyCount: discrepancies.length,
@@ -419,13 +443,13 @@ app.post('/api/audit-forms/detect-discrepancy', (req, res) => {
 
 // 4. Ticket Management (Fase 4: Pengendalian)
 app.get('/api/tickets', (req, res) => {
-  const data = readData();
+  const data = readData(req);
   res.json(data.tickets);
 });
 
 // Submit Ticket Resolution Evidence
 app.post('/api/tickets/:id/resolve', (req, res) => {
-  const data = readData();
+  const data = readData(req);
   const { evidenceOfCompliance } = req.body;
   const ticket = data.tickets.find(t => t.id === req.params.id);
 
@@ -463,29 +487,30 @@ app.post('/api/tickets/:id/resolve', (req, res) => {
     }
   }
 
-  writeData(data);
+  writeData(data, req);
   res.json({ message: 'Ticket resolved successfully.', ticket });
 });
 
 // Manual Escalation to Rektor
 app.post('/api/tickets/:id/escalate', (req, res) => {
-  const data = readData();
+  const data = readData(req);
   const ticket = data.tickets.find(t => t.id === req.params.id);
 
   if (!ticket) {
     return res.status(404).json({ error: 'Ticket not found' });
   }
 
+  ticket.status = 'Breached';
   ticket.escalated = true;
   ticket.escalationNotes = "Eskalasi Manual oleh BPM. Tiket dikirim langsung ke Rektor / Ketua Pimpinan Yayasan untuk intervensi struktural segera.";
   
-  writeData(data);
+  writeData(data, req);
   res.json({ message: 'Ticket escalated to Rektor dashboard.', ticket });
 });
 
 // 5. Predictive Analytics & Versioning (Fase 5: Peningkatan)
 app.get('/api/predictive-analytics', (req, res) => {
-  const data = readData();
+  const data = readData(req);
   const recommendations = [];
 
   // Look for consistently achieved targets (we mock/analyze the historicalCycles + current achievements)
@@ -530,12 +555,12 @@ app.get('/api/predictive-analytics', (req, res) => {
 
 // Version Snapshot (Freeze Standards)
 app.get('/api/versions', (req, res) => {
-  const data = readData();
+  const data = readData(req);
   res.json(data.versions);
 });
 
 app.post('/api/standards/versioning/snapshot', (req, res) => {
-  const data = readData();
+  const data = readData(req);
   const { versionName } = req.body;
 
   if (!versionName) {
@@ -550,7 +575,7 @@ app.post('/api/standards/versioning/snapshot', (req, res) => {
   };
 
   data.versions.push(snapshot);
-  writeData(data);
+  writeData(data, req);
 
   res.status(201).json({ message: `Snapshot version '${versionName}' frozen successfully.`, snapshot });
 });
