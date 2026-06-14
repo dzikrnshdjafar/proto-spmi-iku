@@ -137,6 +137,18 @@ const IKU_FORMULA_CONFIG = {
 };
 
 function App() {
+  // Cycle Switching State
+  const [selectedCycle, setSelectedCycle] = useState('2026');
+
+  // Helper: custom fetch that injects the current cycle header
+  const fetchWithCycle = async (url, options = {}) => {
+    const headers = {
+      ...options.headers,
+      'x-cycle': selectedCycle
+    };
+    return fetch(url, { ...options, headers });
+  };
+
   // Navigation & Filtering
   const [activeStep, setActiveStep] = useState(0); // 0: Penetapan, 1: Pelaksanaan, 2: Evaluasi, 3: Pengendalian, 4: Peningkatan
   const [selectedRumpun, setSelectedRumpun] = useState('All');
@@ -190,7 +202,7 @@ function App() {
   const [scanningDiscrepancy, setScanningDiscrepancy] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
 
-  // Load Initial Data
+  // Load Initial Data & Reload when cycle changes
   useEffect(() => {
     fetchStandards();
     fetchAchievements();
@@ -198,7 +210,7 @@ function App() {
     fetchTickets();
     fetchVersions();
     fetchPredictiveRecs();
-  }, []);
+  }, [selectedCycle]);
 
   // Show dynamic toast helper
   const showToast = (message, type = 'success') => {
@@ -209,7 +221,7 @@ function App() {
   // Fetch Calls
   const fetchStandards = async () => {
     try {
-      const res = await fetch(`${API_BASE}/standards`);
+      const res = await fetchWithCycle(`${API_BASE}/standards`);
       const data = await res.json();
       setStandards(data);
     } catch (err) {
@@ -219,7 +231,7 @@ function App() {
 
   const fetchAchievements = async () => {
     try {
-      const res = await fetch(`${API_BASE}/achievements`);
+      const res = await fetchWithCycle(`${API_BASE}/achievements`);
       const data = await res.json();
       setAchievements(data);
     } catch (err) {
@@ -229,7 +241,7 @@ function App() {
 
   const fetchAuditForms = async () => {
     try {
-      const res = await fetch(`${API_BASE}/audit-forms`);
+      const res = await fetchWithCycle(`${API_BASE}/audit-forms`);
       const data = await res.json();
       setAuditForms(data);
     } catch (err) {
@@ -239,7 +251,7 @@ function App() {
 
   const fetchTickets = async () => {
     try {
-      const res = await fetch(`${API_BASE}/tickets`);
+      const res = await fetchWithCycle(`${API_BASE}/tickets`);
       const data = await res.json();
       setTickets(data);
     } catch (err) {
@@ -249,7 +261,7 @@ function App() {
 
   const fetchVersions = async () => {
     try {
-      const res = await fetch(`${API_BASE}/versions`);
+      const res = await fetchWithCycle(`${API_BASE}/versions`);
       const data = await res.json();
       setVersions(data);
     } catch (err) {
@@ -259,7 +271,7 @@ function App() {
 
   const fetchPredictiveRecs = async () => {
     try {
-      const res = await fetch(`${API_BASE}/predictive-analytics`);
+      const res = await fetchWithCycle(`${API_BASE}/predictive-analytics`);
       const data = await res.json();
       setPredictiveRecs(data);
     } catch (err) {
@@ -276,7 +288,7 @@ function App() {
     }
 
     try {
-      const res = await fetch(`${API_BASE}/standards`, {
+      const res = await fetchWithCycle(`${API_BASE}/standards`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newStd)
@@ -309,7 +321,7 @@ function App() {
     }
 
     try {
-      const res = await fetch(`${API_BASE}/achievements`, {
+      const res = await fetchWithCycle(`${API_BASE}/achievements`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -343,7 +355,7 @@ function App() {
     const oldValue = currentAch ? Number(currentAch.actualValue) : 0;
 
     try {
-      const res = await fetch(`${API_BASE}/sync-api/${source}`, { method: 'POST' });
+      const res = await fetchWithCycle(`${API_BASE}/sync-api/${source}`, { method: 'POST' });
       const data = await res.json();
       if (res.ok) {
         showToast(data.message);
@@ -394,7 +406,7 @@ function App() {
 
   const handleViewRawData = async (source) => {
     try {
-      const res = await fetch(`${API_BASE}/raw-data/${source}`);
+      const res = await fetchWithCycle(`${API_BASE}/raw-data/${source}`);
       const data = await res.json();
       if (res.ok) {
         setRawJsonData(data);
@@ -412,7 +424,7 @@ function App() {
   const handleScanDiscrepancy = async () => {
     setScanningDiscrepancy(true);
     try {
-      const res = await fetch(`${API_BASE}/audit-forms/detect-discrepancy`, { method: 'POST' });
+      const res = await fetchWithCycle(`${API_BASE}/audit-forms/detect-discrepancy`, { method: 'POST' });
       const data = await res.json();
       if (res.ok) {
         showToast(`Audit Selesai. Ditemukan ${data.discrepancyCount} gap, ${data.newTicketsCount} tiket kerja baru digenerate secara objektif.`);
@@ -435,7 +447,7 @@ function App() {
     }
 
     try {
-      const res = await fetch(`${API_BASE}/tickets/${showResolveTicketModal.id}/resolve`, {
+      const res = await fetchWithCycle(`${API_BASE}/tickets/${showResolveTicketModal.id}/resolve`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ evidenceOfCompliance: complianceEvidence })
@@ -457,7 +469,7 @@ function App() {
   // Escalate manual ticket immediately
   const handleEscalateTicket = async (id) => {
     try {
-      const res = await fetch(`${API_BASE}/tickets/${id}/escalate`, { method: 'POST' });
+      const res = await fetchWithCycle(`${API_BASE}/tickets/${id}/escalate`, { method: 'POST' });
       const data = await res.json();
       if (res.ok) {
         showToast('Tiket Mutu Berhasil Dieksalasi langsung ke Dashboard Rektor!', 'warning');
@@ -474,7 +486,7 @@ function App() {
     if (!newVersionName) return;
 
     try {
-      const res = await fetch(`${API_BASE}/standards/versioning/snapshot`, {
+      const res = await fetchWithCycle(`${API_BASE}/standards/versioning/snapshot`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ versionName: newVersionName })
@@ -502,7 +514,7 @@ function App() {
         targetValue: rec.suggestedTarget
       };
 
-      const res = await fetch(`${API_BASE}/standards`, {
+      const res = await fetchWithCycle(`${API_BASE}/standards`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(updatedStd)
@@ -605,6 +617,25 @@ function App() {
           </div>
         </div>
         <div className="system-status">
+          <div className="status-indicator" style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '4px 12px', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.1)' }}>
+            <History size={14} color="var(--primary)" />
+            <select
+              value={selectedCycle}
+              onChange={(e) => setSelectedCycle(e.target.value)}
+              style={{
+                background: 'transparent',
+                color: '#fff',
+                border: 'none',
+                fontSize: '0.85rem',
+                fontWeight: 'bold',
+                cursor: 'pointer',
+                outline: 'none',
+              }}
+            >
+              <option value="2026" style={{ background: '#121620', color: '#fff' }}>Siklus 2026</option>
+              <option value="2025" style={{ background: '#121620', color: '#fff' }}>Siklus 2025</option>
+            </select>
+          </div>
           <div className="status-indicator">
             <div className="status-dot"></div>
             <span>Backend Online</span>
@@ -887,7 +918,7 @@ function App() {
                             style={{ padding: '6px 10px', fontSize: '0.8rem' }}
                             onClick={async () => {
                               if (confirm('Hapus standar ini?')) {
-                                await fetch(`${API_BASE}/standards/${std.id}`, { method: 'DELETE' });
+                                await fetchWithCycle(`${API_BASE}/standards/${std.id}`, { method: 'DELETE' });
                                 showToast('Standar berhasil dihapus!');
                                 fetchStandards();
                               }
@@ -1195,17 +1226,18 @@ function App() {
                           <button
                             className="btn btn-success"
                             style={{ padding: '4px 8px', fontSize: '0.75rem' }}
-                            onClick={() => {
-                              setSelectedTicketForResolve(ticket);
-                              setShowResolveTicketModal(ticket);
-                            }}
+                            onClick={() => setShowResolveTicketModal(ticket)}
                           >
                             Resolve
                           </button>
                           <button
                             className="btn btn-secondary"
-                            style={{ padding: '4px 8px', fontSize: '0.75rem' }}
-                            onClick={() => handleEscalateTicket(ticket.id)}
+                            style={{ padding: '4px 8px', fontSize: '0.75rem', background: 'rgba(239,68,68,0.1)', border: '1px solid rgba(239,68,68,0.4)', color: 'var(--danger)' }}
+                            onClick={() => {
+                              if (confirm(`Eskalasi tiket "${ticket.parameterViolated}" ke Rektor sekarang? Tindakan ini tidak dapat dibatalkan.`)) {
+                                handleEscalateTicket(ticket.id);
+                              }
+                            }}
                           >
                             Eskalasi
                           </button>
@@ -1290,10 +1322,7 @@ function App() {
                         <button
                           className="btn btn-success"
                           style={{ padding: '6px 12px', width: '100%' }}
-                          onClick={() => {
-                            setSelectedTicketForResolve(ticket);
-                            setShowResolveTicketModal(ticket);
-                          }}
+                          onClick={() => setShowResolveTicketModal(ticket)}
                         >
                           Intervensi & Unggah Bukti
                         </button>
