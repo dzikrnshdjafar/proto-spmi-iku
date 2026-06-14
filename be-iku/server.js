@@ -36,9 +36,28 @@ function getFilePath(cycle) {
   return path.join(dataDir, fileName);
 }
 
+// Helper: Get raw data file path
+function getRawFilePath(fileName) {
+  const tmpPath = path.join('/tmp', fileName);
+  if (process.env.VERCEL && fs.existsSync(tmpPath)) {
+    return tmpPath;
+  }
+  return path.join(__dirname, fileName);
+}
+
+
 // Vercel Serverless environment compatibility (Seed initial files to /tmp)
 if (process.env.VERCEL) {
-  ['data.json', 'data_2025.json'].forEach(file => {
+  // Statically reference the files using string literals so Vercel's bundler (NFT)
+  // knows to include them in the Serverless Function bundle.
+  if (false) {
+    path.join(__dirname, 'data.json');
+    path.join(__dirname, 'data_2025.json');
+    path.join(__dirname, 'raw-sister.json');
+    path.join(__dirname, 'raw-obe.json');
+  }
+
+  ['data.json', 'data_2025.json', 'raw-sister.json', 'raw-obe.json'].forEach(file => {
     try {
       const tmpPath = path.join('/tmp', file);
       if (!fs.existsSync(tmpPath)) {
@@ -46,6 +65,8 @@ if (process.env.VERCEL) {
         if (fs.existsSync(srcPath)) {
           fs.copyFileSync(srcPath, tmpPath);
           console.log(`Seeded initial ${file} to ${tmpPath}`);
+        } else {
+          console.warn(`Source file for seeding not found at: ${srcPath}`);
         }
       }
     } catch (err) {
@@ -59,6 +80,20 @@ function readData(req) {
   const cycle = req && req.headers && req.headers['x-cycle'] || '2026';
   const dataPath = getFilePath(cycle);
   try {
+    if (!fs.existsSync(dataPath)) {
+      // Fallback: If in Vercel and it's not in /tmp, try to seed it dynamically from __dirname
+      if (process.env.VERCEL) {
+        const fileName = cycle === '2025' ? 'data_2025.json' : 'data.json';
+        const srcPath = path.join(__dirname, fileName);
+        if (fs.existsSync(srcPath)) {
+          fs.copyFileSync(srcPath, dataPath);
+          console.log(`Dynamically seeded ${fileName} from ${srcPath} to ${dataPath}`);
+        } else {
+          console.warn(`Dynamic seed source file not found at: ${srcPath}`);
+        }
+      }
+    }
+
     if (!fs.existsSync(dataPath)) {
       if (cycle === '2025') {
         const defaultPath = getFilePath('2026');
@@ -199,7 +234,7 @@ app.post('/api/upload-evidence', upload.single('file'), (req, res) => {
 app.get('/api/raw-data/:source', (req, res) => {
   const { source } = req.params;
   const fileName = source.toLowerCase() === 'sister' ? 'raw-sister.json' : 'raw-obe.json';
-  const filePath = path.join(__dirname, fileName);
+  const filePath = getRawFilePath(fileName);
 
   try {
     if (fs.existsSync(filePath)) {
@@ -221,12 +256,12 @@ app.post('/api/sync-api/:source', (req, res) => {
 
   if (source === 'SISTER') {
     // Read raw SISTER JSON
-    const sisterPath = path.join(__dirname, 'raw-sister.json');
+    const sisterPath = getRawFilePath('raw-sister.json');
     if (!fs.existsSync(sisterPath)) {
       return res.status(404).json({ error: 'Raw SISTER data not found' });
     }
     const rawData = JSON.parse(fs.readFileSync(sisterPath, 'utf8'));
-    
+
     // Calculate S3 Ratio: (Number of S3 active lecturers / Total active lecturers) * 100
     const activeLecturers = rawData.dataDosen.filter(d => d.statusAktif);
     const s3Lecturers = activeLecturers.filter(d => d.pendidikanTertinggi === 'S3');
@@ -252,7 +287,7 @@ app.post('/api/sync-api/:source', (req, res) => {
     updatedCount++;
   } else if (source === 'OBE') {
     // Read raw OBE JSON
-    const obePath = path.join(__dirname, 'raw-obe.json');
+    const obePath = getRawFilePath('raw-obe.json');
     if (!fs.existsSync(obePath)) {
       return res.status(404).json({ error: 'Raw OBE data not found' });
     }
@@ -337,7 +372,7 @@ app.post('/api/audit-forms/detect-discrepancy', (req, res) => {
 
     if (breached) {
       const description = `Audit Temuan: ${std.nama} tidak memenuhi standar. Target: ${std.operator} ${std.targetValue}, Capaian Riil: ${actualStr}.`;
-      
+
       if (!auditForm) {
         auditForm = {
           id: `AUD-${String(data.auditForms.length + 1).padStart(3, '0')}`,
@@ -405,7 +440,7 @@ app.post('/api/audit-forms/detect-discrepancy', (req, res) => {
           escalated: false,
           escalationNotes: null
         };
-        
+
         data.tickets.push(newTicket);
         generatedTickets.push(newTicket);
       }
@@ -466,10 +501,10 @@ app.post('/api/tickets/:id/resolve', (req, res) => {
   const standard = data.standards.find(s => s.id === ticket.standardId);
   if (standard) {
     const achIdx = data.achievements.findIndex(a => a.standardId === standard.id);
-    
+
     // We assume the evidence of compliance successfully resolves the indicator target
     const resolvedValue = standard.targetValue; // Set actual to target to simulate completion
-    
+
     const achievement = {
       id: achIdx > -1 ? data.achievements[achIdx].id : `ACH-${String(data.achievements.length + 1).padStart(3, '0')}`,
       standardId: standard.id,
@@ -503,7 +538,7 @@ app.post('/api/tickets/:id/escalate', (req, res) => {
   ticket.status = 'Breached';
   ticket.escalated = true;
   ticket.escalationNotes = "Eskalasi Manual oleh BPM. Tiket dikirim langsung ke Rektor / Ketua Pimpinan Yayasan untuk intervensi struktural segera.";
-  
+
   writeData(data, req);
   res.json({ message: 'Ticket escalated to Rektor dashboard.', ticket });
 });
