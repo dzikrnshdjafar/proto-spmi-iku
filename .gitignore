@@ -1,0 +1,10 @@
+node_modules/
+.env
+.DS_Store
+dist/
+build/
+fe-iku/node_modules/
+fe-iku/dist/
+be-iku/node_modules/
+be-iku/.env
+be-iku/uploads/

@@ -8,15 +8,75 @@
     "prodiBelumOBE": 2
   },
   "dataKurikulumProdi": [
-    { "kodeProdi": "INF-01", "namaProdi": "S1 Teknik Informatika", "statusKurikulum": "OBE Implemented", "tanggalReviewKurikulum": "2025-11-20", "asesmenCPL": "Active" },
-    { "kodeProdi": "SI-02", "namaProdi": "S1 Sistem Informasi", "statusKurikulum": "OBE Implemented", "tanggalReviewKurikulum": "2025-12-05", "asesmenCPL": "Active" },
-    { "kodeProdi": "DS-03", "namaProdi": "S1 Sains Data", "statusKurikulum": "OBE Implemented", "tanggalReviewKurikulum": "2025-10-18", "asesmenCPL": "Active" },
-    { "kodeProdi": "TE-04", "namaProdi": "S1 Teknik Elektro", "statusKurikulum": "Drafting Phase", "tanggalReviewKurikulum": "2026-01-10", "asesmenCPL": "Pending" },
-    { "kodeProdi": "TK-05", "namaProdi": "S1 Teknik Kimia", "statusKurikulum": "OBE Implemented", "tanggalReviewKurikulum": "2025-10-15", "asesmenCPL": "Active" },
-    { "kodeProdi": "FT-06", "namaProdi": "S1 Fisika Teoretis", "statusKurikulum": "OBE Implemented", "tanggalReviewKurikulum": "2025-09-30", "asesmenCPL": "Active" },
-    { "kodeProdi": "MT-07", "namaProdi": "S1 Matematika", "statusKurikulum": "OBE Implemented", "tanggalReviewKurikulum": "2025-09-25", "asesmenCPL": "Active" },
-    { "kodeProdi": "BIO-08", "namaProdi": "S1 Biologi", "statusKurikulum": "Drafting Phase", "tanggalReviewKurikulum": "2026-02-14", "asesmenCPL": "Pending" },
-    { "kodeProdi": "AR-09", "namaProdi": "S1 Arsitektur", "statusKurikulum": "OBE Implemented", "tanggalReviewKurikulum": "2025-11-12", "asesmenCPL": "Active" },
-    { "kodeProdi": "TS-10", "namaProdi": "S1 Teknik Sipil", "statusKurikulum": "OBE Implemented", "tanggalReviewKurikulum": "2025-11-08", "asesmenCPL": "Active" }
+    {
+      "kodeProdi": "INF-01",
+      "namaProdi": "S1 Teknik Informatika",
+      "statusKurikulum": "OBE Implemented",
+      "tanggalReviewKurikulum": "2025-11-20",
+      "asesmenCPL": "Active"
+    },
+    {
+      "kodeProdi": "SI-02",
+      "namaProdi": "S1 Sistem Informasi",
+      "statusKurikulum": "OBE Implemented",
+      "tanggalReviewKurikulum": "2025-12-05",
+      "asesmenCPL": "Active"
+    },
+    {
+      "kodeProdi": "DS-03",
+      "namaProdi": "S1 Sains Data",
+      "statusKurikulum": "OBE Implemented",
+      "tanggalReviewKurikulum": "2025-10-18",
+      "asesmenCPL": "Active"
+    },
+    {
+      "kodeProdi": "TE-04",
+      "namaProdi": "S1 Teknik Elektro",
+      "statusKurikulum": "Drafting Phase",
+      "tanggalReviewKurikulum": "2026-01-10",
+      "asesmenCPL": "Pending"
+    },
+    {
+      "kodeProdi": "TK-05",
+      "namaProdi": "S1 Teknik Kimia",
+      "statusKurikulum": "OBE Implemented",
+      "tanggalReviewKurikulum": "2025-10-15",
+      "asesmenCPL": "Active"
+    },
+    {
+      "kodeProdi": "FT-06",
+      "namaProdi": "S1 Fisika Teoretis",
+      "statusKurikulum": "OBE Implemented",
+      "tanggalReviewKurikulum": "2025-09-30",
+      "asesmenCPL": "Active"
+    },
+    {
+      "kodeProdi": "MT-07",
+      "namaProdi": "S1 Matematika",
+      "statusKurikulum": "OBE Implemented",
+      "tanggalReviewKurikulum": "2025-09-25",
+      "asesmenCPL": "Active"
+    },
+    {
+      "kodeProdi": "BIO-08",
+      "namaProdi": "S1 Biologi",
+      "statusKurikulum": "Drafting Phase",
+      "tanggalReviewKurikulum": "2026-02-14",
+      "asesmenCPL": "Pending"
+    },
+    {
+      "kodeProdi": "AR-09",
+      "namaProdi": "S1 Arsitektur",
+      "statusKurikulum": "OBE Implemented",
+      "tanggalReviewKurikulum": "2025-11-12",
+      "asesmenCPL": "Active"
+    },
+    {
+      "kodeProdi": "TS-10",
+      "namaProdi": "S1 Teknik Sipil",
+      "statusKurikulum": "OBE Implemented",
+      "tanggalReviewKurikulum": "2025-11-08",
+      "asesmenCPL": "Active"
+    }
   ]
 }

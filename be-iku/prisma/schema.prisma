@@ -1,0 +1,101 @@
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Standard {
+  id                  String
+  cycle               String
+  rumpun              String
+  nama                String
+  formula             String
+  targetType          String
+  targetValue         Float
+  operator            String
+  snDikti             String
+  unitPenanggungJawab String
+
+  achievements        Achievement[]
+  auditForms          AuditForm[]
+  tickets             Ticket[]
+  historicalCycles    HistoricalCycle[]
+
+  @@id([id, cycle])
+}
+
+model Achievement {
+  id               String
+  cycle            String
+  standardId       String
+  actualValue      Float
+  evidenceUrl      String?
+  evidenceFileName String?
+  lastUpdated      DateTime @default(now())
+  syncSource       String
+
+  standard         Standard @relation(fields: [standardId, cycle], references: [id, cycle], onDelete: Cascade)
+
+  @@id([id, cycle])
+}
+
+model AuditForm {
+  id           String
+  cycle        String
+  standardId   String
+  status       String
+  auditorNotes String
+  auditedAt    DateTime @default(now())
+  auditorName  String
+
+  standard     Standard @relation(fields: [standardId, cycle], references: [id, cycle], onDelete: Cascade)
+
+  @@id([id, cycle])
+}
+
+model Ticket {
+  id                   String
+  cycle                String
+  standardId           String
+  auditId              String?
+  description          String
+  parameterViolated    String
+  recommendation       String
+  assignedToUnit       String
+  slaDays              Int
+  createdAt            DateTime @default(now())
+  dueDate              DateTime
+  status               String
+  evidenceOfCompliance String?
+  resolvedAt           DateTime?
+  escalated            Boolean  @default(false)
+  escalationNotes      String?
+
+  standard             Standard @relation(fields: [standardId, cycle], references: [id, cycle], onDelete: Cascade)
+
+  @@id([id, cycle])
+}
+
+model HistoricalCycle {
+  id                  Int      @id @default(autoincrement())
+  cycle               String
+  historicalCycleName String
+  standardId          String
+  targetValue         Float
+  actualValue         Float
+
+  standard            Standard @relation(fields: [standardId, cycle], references: [id, cycle], onDelete: Cascade)
+}
+
+model Version {
+  id             String   @id @default(uuid())
+  cycle          String
+  versionName    String
+  frozenAt       DateTime @default(now())
+  standardsCount Int
+  standardsJson  Json
+}

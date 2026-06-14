@@ -33,8 +33,8 @@ import {
 } from 'lucide-react';
 import './App.css';
 
-const API_BASE = import.meta.env.VITE_API_BASE || 'https://spmi-iku-backend.vercel.app/api';
-// const API_BASE = 'http://localhost:5000/api';
+// const API_BASE = import.meta.env.VITE_API_BASE || 'https://spmi-iku-backend.vercel.app/api';
+const API_BASE = 'http://localhost:5000/api';
 
 const IKU_FORMULA_CONFIG = {
   "IKU-001": {
@@ -201,15 +201,31 @@ function App() {
   const [syncingSource, setSyncingSource] = useState(null);
   const [scanningDiscrepancy, setScanningDiscrepancy] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   // Load Initial Data & Reload when cycle changes
   useEffect(() => {
-    fetchStandards();
-    fetchAchievements();
-    fetchAuditForms();
-    fetchTickets();
-    fetchVersions();
-    fetchPredictiveRecs();
+    const loadAllData = async () => {
+      setIsLoading(true);
+      try {
+        await Promise.all([
+          fetchStandards(),
+          fetchAchievements(),
+          fetchAuditForms(),
+          fetchTickets(),
+          fetchVersions(),
+          fetchPredictiveRecs()
+        ]);
+      } catch (err) {
+        console.error('Error loading SPMI data:', err);
+      } finally {
+        // 500ms smooth transition delay
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 500);
+      }
+    };
+    loadAllData();
   }, [selectedCycle]);
 
   // Show dynamic toast helper
@@ -586,6 +602,16 @@ function App() {
 
   return (
     <div className="app-container">
+      {/* Loading Overlay */}
+      {isLoading && (
+        <div className="loading-overlay">
+          <div className="loading-spinner-container">
+            <div className="loading-spinner"></div>
+            <p className="loading-text">Memuat Data Penjaminan Mutu...</p>
+          </div>
+        </div>
+      )}
+
       {/* Sidebar Backdrop Overlay on Mobile */}
       {isSidebarOpen && (
         <div className="sidebar-overlay-backdrop" onClick={() => setIsSidebarOpen(false)}></div>
