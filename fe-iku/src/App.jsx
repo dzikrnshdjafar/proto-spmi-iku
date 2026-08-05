@@ -29,7 +29,8 @@ import {
   FileCheck,
   ChevronDown,
   ChevronRight,
-  Menu
+  Menu,
+  HelpCircle
 } from 'lucide-react';
 import './App.css';
 
@@ -135,6 +136,37 @@ const IKU_FORMULA_CONFIG = {
   }
 };
 
+const getInitialInputs = (stdId, actualValue) => {
+  const config = IKU_FORMULA_CONFIG[stdId];
+  if (!config) return {};
+
+  const initialInputs = {};
+  config.inputs.forEach(ip => {
+    initialInputs[ip.key] = ip.defaultValue;
+  });
+
+  if (actualValue !== undefined && actualValue !== null && !isNaN(Number(actualValue))) {
+    const actNum = Number(actualValue);
+    if (stdId === 'IKU-011') {
+      initialInputs.keuangan = actNum;
+      initialInputs.ppks = actNum;
+      initialInputs.narkoba = actNum;
+    } else if (config.inputs.length === 2) {
+      const firstInput = config.inputs[0];
+      const secondInput = config.inputs[1];
+      const secondVal = Number(initialInputs[secondInput.key]);
+      if (secondVal > 0) {
+        if (stdId === 'IKU-001') {
+          initialInputs[firstInput.key] = parseFloat(((actNum / 100) * secondVal).toFixed(2));
+        } else {
+          initialInputs[firstInput.key] = Math.round((actNum / 100) * secondVal);
+        }
+      }
+    }
+  }
+  return initialInputs;
+};
+
 function App() {
   // Cycle Switching State
   const [selectedCycle, setSelectedCycle] = useState('2026');
@@ -173,6 +205,8 @@ function App() {
   const [calcInputs, setCalcInputs] = useState({});
   const [showResolveTicketModal, setShowResolveTicketModal] = useState(null);
   const [showVersionModal, setShowVersionModal] = useState(false);
+  const [showCriteriaModal, setShowCriteriaModal] = useState(false);
+  const [showHelpModal, setShowHelpModal] = useState(null);
   const [rawJsonData, setRawJsonData] = useState(null);
   const [showRawDataModal, setShowRawDataModal] = useState(false);
   const [rawDataSource, setRawDataSource] = useState('');
@@ -895,9 +929,20 @@ function App() {
                   <h2><Bookmark size={20} color="var(--primary)" /> Fase 1: Penetapan Standar Mutu</h2>
                   <p>Definisikan standar IKU, formula target kualitatif & kuantitatif, dan petakan ke 7 SN Dikti dasar kementerian.</p>
                 </div>
-                <button className="btn btn-primary" onClick={() => setShowAddStdModal(true)}>
-                  <Plus size={16} /> Tambah Standar IKU
-                </button>
+                <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+                  <button
+                    type="button"
+                    className="btn btn-secondary"
+                    style={{ padding: '8px', minWidth: '36px', height: '36px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                    onClick={() => setShowHelpModal(0)}
+                    title="Panduan Fase 1"
+                  >
+                    <HelpCircle size={16} />
+                  </button>
+                  <button className="btn btn-primary" onClick={() => setShowAddStdModal(true)}>
+                    <Plus size={16} /> Tambah Standar IKU
+                  </button>
+                </div>
               </div>
 
               <div className="table-wrapper">
@@ -968,11 +1013,20 @@ function App() {
                   <h2><Activity size={20} color="var(--success)" /> Fase 2: Pelaksanaan & Sinkronisasi Data</h2>
                   <p>Mencatat pencapaian capaian riil tiap unit kerja. Dukung unggah berkas legalitas atau sinkronisasi API data eksternal.</p>
                 </div>
-                <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', alignItems: 'center' }}>
+                  <button
+                    type="button"
+                    className="btn btn-secondary"
+                    style={{ padding: '8px', minWidth: '36px', height: '36px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                    onClick={() => setShowHelpModal(1)}
+                    title="Panduan Fase 2"
+                  >
+                    <HelpCircle size={16} />
+                  </button>
                   <button
                     className="btn btn-secondary"
                     onClick={() => handleViewRawData('SISTER')}
-                    style={{ fontSize: '0.8rem', padding: '6px 10px', background: 'rgba(59, 130, 246, 0.1)', border: '1px solid rgba(59, 130, 246, 0.3)', display: 'inline-flex', alignItems: 'center', gap: '4px' }}
+                    style={{ fontSize: '0.8rem', padding: '6px 10px', background: 'rgba(59, 130, 246, 0.1)', border: '1px solid rgba(59, 130, 246, 0.3)', display: 'inline-flex', alignItems: 'center', gap: '4px', height: '36px' }}
                   >
                     <Database size={14} /> Data Mentah SISTER
                   </button>
@@ -980,6 +1034,7 @@ function App() {
                     className="btn btn-secondary"
                     onClick={() => handleSyncSource('SISTER')}
                     disabled={syncingSource !== null}
+                    style={{ height: '36px' }}
                   >
                     <CloudSync size={16} />
                     {syncingSource === 'SISTER' ? 'Sync SISTER...' : 'Simulasi Sync SISTER'}
@@ -987,7 +1042,7 @@ function App() {
                   <button
                     className="btn btn-secondary"
                     onClick={() => handleViewRawData('OBE')}
-                    style={{ fontSize: '0.8rem', padding: '6px 10px', background: 'rgba(59, 130, 246, 0.1)', border: '1px solid rgba(59, 130, 246, 0.3)', display: 'inline-flex', alignItems: 'center', gap: '4px' }}
+                    style={{ fontSize: '0.8rem', padding: '6px 10px', background: 'rgba(59, 130, 246, 0.1)', border: '1px solid rgba(59, 130, 246, 0.3)', display: 'inline-flex', alignItems: 'center', gap: '4px', height: '36px' }}
                   >
                     <Database size={14} /> Data Mentah OBE
                   </button>
@@ -995,6 +1050,7 @@ function App() {
                     className="btn btn-secondary"
                     onClick={() => handleSyncSource('OBE')}
                     disabled={syncingSource !== null}
+                    style={{ height: '36px' }}
                   >
                     <CloudSync size={16} />
                     {syncingSource === 'OBE' ? 'Sync OBE...' : 'Simulasi Sync Sistem OBE'}
@@ -1056,12 +1112,9 @@ function App() {
                                   setShowUploadModal(true);
                                   const config = IKU_FORMULA_CONFIG[std.id];
                                   if (config) {
-                                    const initialInputs = {};
-                                    config.inputs.forEach(ip => {
-                                      initialInputs[ip.key] = ip.defaultValue;
-                                    });
+                                    const initialInputs = getInitialInputs(std.id, ach ? ach.actualValue : null);
                                     setCalcInputs(initialInputs);
-                                    const initialCalc = config.calc(initialInputs);
+                                    const initialCalc = ach ? ach.actualValue : config.calc(initialInputs);
                                     setSelectedStdForUpload({ ...std, tempValue: initialCalc });
                                   } else {
                                     setCalcInputs({});
@@ -1116,14 +1169,25 @@ function App() {
                   <h2><CheckSquare size={20} color="var(--warning)" /> Fase 3: Audit & Evaluasi Digital (Borang AMI)</h2>
                   <p>Melakukan Penilaian Audit Mutu Internal (AMI) secara otomatis. Jalankan sistem detektor deviasi/discrepancy.</p>
                 </div>
-                <button
-                  className="btn btn-primary animate-pulse-glow"
-                  onClick={handleScanDiscrepancy}
-                  disabled={scanningDiscrepancy}
-                >
-                  <Search size={16} />
-                  {scanningDiscrepancy ? 'Scanning Capaian...' : 'Jalankan Auto-Discrepancy Scanner'}
-                </button>
+                <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+                  <button
+                    type="button"
+                    className="btn btn-secondary"
+                    style={{ padding: '8px', minWidth: '36px', height: '36px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                    onClick={() => setShowHelpModal(2)}
+                    title="Panduan Fase 3"
+                  >
+                    <HelpCircle size={16} />
+                  </button>
+                  <button
+                    className="btn btn-primary animate-pulse-glow"
+                    onClick={handleScanDiscrepancy}
+                    disabled={scanningDiscrepancy}
+                  >
+                    <Search size={16} />
+                    {scanningDiscrepancy ? 'Scanning Capaian...' : 'Jalankan Auto-Discrepancy Scanner'}
+                  </button>
+                </div>
               </div>
 
               <div className="table-wrapper">
@@ -1210,6 +1274,15 @@ function App() {
                   <h2><Ticket size={20} color="var(--danger)" /> Fase 4: Tiket Kerja Mutu & Intelligent Routing</h2>
                   <p>Setiap temuan audit secara otomatis dialirkan secara objektif ke unit kerja pendukung melalui Intelligent Routing Engine.</p>
                 </div>
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  style={{ padding: '8px', minWidth: '36px', height: '36px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                  onClick={() => setShowHelpModal(3)}
+                  title="Panduan Fase 4"
+                >
+                  <HelpCircle size={16} />
+                </button>
               </div>
 
               <div className="kanban-board">
@@ -1372,9 +1445,20 @@ function App() {
                   <h2><TrendingUp size={20} color="var(--info)" /> Fase 5: Predictive Analytics & Versioning Control</h2>
                   <p>Menganalisis delta positif capaian multi-siklus untuk menaikkan target standar, serta membekukan snapshot standard historis.</p>
                 </div>
-                <button className="btn btn-secondary" onClick={() => setShowVersionModal(true)}>
-                  <History size={16} /> Bekukan Versi Standar (Snapshot)
-                </button>
+                <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+                  <button
+                    type="button"
+                    className="btn btn-secondary"
+                    style={{ padding: '8px', minWidth: '36px', height: '36px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                    onClick={() => setShowCriteriaModal(true)}
+                    title="Kriteria Rekomendasi Peningkatan Target"
+                  >
+                    <HelpCircle size={16} />
+                  </button>
+                  <button className="btn btn-secondary" onClick={() => setShowVersionModal(true)}>
+                    <History size={16} /> Bekukan Versi Standar (Snapshot)
+                  </button>
+                </div>
               </div>
 
               <div className="fase5-grid">
@@ -1657,7 +1741,7 @@ function App() {
                   </div>
                 )}
 
-                <div className="form-group-full">
+                {/* <div className="form-group-full">
                   <label>Capaian Riil Saat Ini*</label>
                   <input
                     type="text"
@@ -1667,8 +1751,9 @@ function App() {
                       setSelectedStdForUpload({ ...selectedStdForUpload, tempValue: e.target.value });
                     }}
                     required
+                    readOnly
                   />
-                </div>
+                </div> */}
 
                 <div className="form-group-full">
                   <label>Link Bukti Fisik / SK Legalitas (Drive / URL)*</label>
@@ -1810,6 +1895,117 @@ function App() {
             </div>
             <div className="modal-footer">
               <button type="button" className="btn btn-secondary" onClick={() => setShowRawDataModal(false)}>Tutup</button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* 6. Modal: Kriteria Rekomendasi Peningkatan IKU (Fase 5) */}
+      {showCriteriaModal && (
+        <div className="modal-overlay">
+          <div className="modal-content glass-panel" style={{ maxWidth: '500px', width: '90%' }}>
+            <button className="modal-close" onClick={() => setShowCriteriaModal(false)}><X size={20} /></button>
+            <div className="modal-header">
+              <h3><HelpCircle size={20} color="var(--info)" /> Kriteria Rekomendasi Peningkatan</h3>
+              <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>
+                Bagaimana AI mendeteksi delta positif dan merekomendasikan kenaikan target IKU?
+              </p>
+            </div>
+            <div className="modal-body" style={{ fontSize: '0.9rem', color: '#d1d5db', lineHeight: 1.6 }}>
+              <p style={{ marginBottom: '12px' }}>
+                Agar indikator IKU dapat muncul dalam daftar rekomendasi peningkatan target pada Fase 5, sistem mengevaluasi kriteria berikut secara otomatis:
+              </p>
+              <ul style={{ paddingLeft: '20px', listStyleType: 'disc', display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '16px' }}>
+                <li>
+                  <strong style={{ color: '#fff' }}>Capaian Saat Ini Lolos Target:</strong> Capaian aktual IKU pada siklus aktif saat ini wajib memenuhi target (status hijau/Lolos pada Fase 3).
+                </li>
+                <li>
+                  <strong style={{ color: '#fff' }}>Konsistensi Historis (Minimal 1 Tahun/Siklus):</strong> Indikator wajib memiliki riwayat performa di masa lalu minimal selama <strong style={{ color: '#38bdf8' }}>1 tahun/siklus historis sebelumnya</strong> (tabel <code>HistoricalCycle</code>) dan selalu berhasil memenuhi target pada setiap siklus tersebut.
+                </li>
+                <li>
+                  <strong style={{ color: '#fff' }}>Pengecualian Khusus (IKU-002):</strong> Khusus untuk IKU keterserapan lulusan (<code>IKU-002</code>), rekomendasi akan langsung muncul segera setelah target siklus saat ini terpenuhi, tanpa mewajibkan data historis.
+                </li>
+              </ul>
+              <div style={{ background: 'rgba(6, 182, 212, 0.1)', border: '1px solid rgba(6, 182, 212, 0.3)', padding: '12px', borderRadius: '8px', fontSize: '0.8rem', color: '#67e8f9' }}>
+                💡 <strong>Rekomendasi AI:</strong> Jika kriteria di atas terpenuhi, sistem memproyeksikan kenaikan target optimal sebesar <strong>10% - 15%</strong> untuk bersaing di tingkat nasional/internasional.
+              </div>
+            </div>
+            <div className="modal-footer">
+              <button type="button" className="btn btn-secondary" onClick={() => setShowCriteriaModal(false)}>Tutup</button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* 7. Modal: Panduan Fase SPMI-IKU (Fase 1-4) */}
+      {showHelpModal !== null && (
+        <div className="modal-overlay">
+          <div className="modal-content glass-panel" style={{ maxWidth: '550px', width: '90%' }}>
+            <button className="modal-close" onClick={() => setShowHelpModal(null)}><X size={20} /></button>
+            <div className="modal-header">
+              <h3>
+                <HelpCircle size={20} color="var(--primary)" /> 
+                {showHelpModal === 0 && "Panduan Fase 1: Penetapan Standar Mutu"}
+                {showHelpModal === 1 && "Panduan Fase 2: Pelaksanaan & Sinkronisasi"}
+                {showHelpModal === 2 && "Panduan Fase 3: Evaluasi & Audit Digital (AMI)"}
+                {showHelpModal === 3 && "Panduan Fase 4: Pengendalian & Tiket Kerja"}
+              </h3>
+              <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>
+                Informasi dan aturan penting terkait pelaksanaan fase penjaminan mutu ini.
+              </p>
+            </div>
+            <div className="modal-body" style={{ fontSize: '0.9rem', color: '#d1d5db', lineHeight: 1.6 }}>
+              {showHelpModal === 0 && (
+                <>
+                  <p style={{ marginBottom: '12px' }}>
+                    <strong>Fase Penetapan</strong> merupakan fondasi awal dari siklus PPEPP. Di sini standar mutu universitas didefinisikan:
+                  </p>
+                  <ul style={{ paddingLeft: '20px', listStyleType: 'disc', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                    <li><strong>Target Nilai & Operator:</strong> Setiap IKU harus memiliki kriteria target yang terukur (seperti <code>&gt;= 85%</code> atau <code>&lt;= 3.5 Tahun</code>).</li>
+                    <li><strong>Pemetaan SN Dikti:</strong> Memetakan standar mutu internal kampus ke 7 rumpun Standar Nasional Pendidikan Tinggi resmi dari kementerian.</li>
+                    <li><strong>PIC Unit Kerja:</strong> Menentukan divisi/unit yang bertanggung jawab langsung atas pencapaian dan bukti fisik indikator tersebut.</li>
+                  </ul>
+                </>
+              )}
+              {showHelpModal === 1 && (
+                <>
+                  <p style={{ marginBottom: '12px' }}>
+                    <strong>Fase Pelaksanaan</strong> mengukur realisasi kinerja lapangan dari unit-unit kerja yang bertanggung jawab:
+                  </p>
+                  <ul style={{ paddingLeft: '20px', listStyleType: 'disc', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                    <li><strong>Unggah Bukti Legalitas:</strong> Setiap capaian wajib menyertakan link dokumen legalitas (Drive/URL) dan berkas bukti fisik (PDF/Excel) sebagai validitas formal.</li>
+                    <li><strong>Simulasi Sync API:</strong> Integrasi dengan SISTER (dosen) dan OBE (lulusan) untuk menarik data mentah eksternal dan menghitung capaian riil secara otomatis menggunakan formula resmi.</li>
+                    <li><strong>Simulator Formula:</strong> Pengguna dapat memencet tombol <em>Edit/Hitung Ulang</em> untuk memasukkan variabel simulator rumusnya secara interaktif.</li>
+                  </ul>
+                </>
+              )}
+              {showHelpModal === 2 && (
+                <>
+                  <p style={{ marginBottom: '12px' }}>
+                    <strong>Fase Evaluasi (Audit Mutu Internal)</strong> menilai kesesuaian target dengan capaian riil lapangan:
+                  </p>
+                  <ul style={{ paddingLeft: '20px', listStyleType: 'disc', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                    <li><strong>Auto-Discrepancy Scanner:</strong> Memindai seluruh capaian secara otomatis untuk membandingkannya dengan standar yang ditetapkan.</li>
+                    <li><strong>Hasil Audit Lolos:</strong> Ditandai dengan warna hijau <code>OK (Lolos)</code> dengan catatan borang audit yang bersih dari temuan.</li>
+                    <li><strong>Hasil Temuan Audit:</strong> Ditandai merah <code>Deviasi Terdeteksi</code>. Peringatan ini secara otomatis memicu pembuatan tiket penanganan mutu pada Fase 4 demi mencegah kelalaian.</li>
+                  </ul>
+                </>
+              )}
+              {showHelpModal === 3 && (
+                <>
+                  <p style={{ marginBottom: '12px' }}>
+                    <strong>Fase Pengendalian</strong> menindaklanjuti temuan audit secara terstruktur, transparan, dan akuntabel:
+                  </p>
+                  <ul style={{ paddingLeft: '20px', listStyleType: 'disc', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                    <li><strong>Intelligent Routing:</strong> Sistem otomatis menyalurkan tiket temuan ke unit eksekutor yang berwenang (misalnya masalah legalitas ke LBH Unit 3, masalah dosen ke Kepegawaian Unit 4, dsb).</li>
+                    <li><strong>SLA 30 Hari & Eskalasi Rektor:</strong> Batas penyelesaian perbaikan adalah 30 hari. Jika melebihi waktu tersebut, tiket otomatis dialihkan ke Dashboard Rektor untuk intervensi pimpinan.</li>
+                    <li><strong>Pemulihan Otomatis:</strong> Ketika unit kerja mengunggah bukti perbaikan, status tiket berubah ke <em>Resolved</em> dan capaian riil di Fase 2 akan diperbarui otomatis agar memenuhi target.</li>
+                  </ul>
+                </>
+              )}
+            </div>
+            <div className="modal-footer">
+              <button type="button" className="btn btn-secondary" onClick={() => setShowHelpModal(null)}>Tutup</button>
             </div>
           </div>
         </div>
